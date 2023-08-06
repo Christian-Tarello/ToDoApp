@@ -1,4 +1,4 @@
-class ToDo {
+class Task {
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
@@ -9,6 +9,6 @@ class ToDo {
 }
 
 /* In case it ever becomes a factory function instead */
-export default function createToDo(...args) {
-    return new ToDo(...args);
+export default function createTask(...args) {
+    return new Task(...args);
 }
