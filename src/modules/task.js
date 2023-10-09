@@ -1,5 +1,10 @@
+import createCounter from "./counter";
+
+const counter = createCounter();
+
 class Task {
     constructor(title, description, dueDate, priority) {
+        this.id = counter();
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
