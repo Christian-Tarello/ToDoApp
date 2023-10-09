@@ -1,10 +1,11 @@
 import CollectionWrapper from "./collectionWrapper";
 import createCounter from "./counter";
+import Priority from "./priority";
 
 const counter = createCounter();
 
 class Task {
-    constructor(title, description, dueDate, priority) {
+    constructor(title, description, dueDate, priority = Priority.UNSET) {
         this.id = counter();
         this.title = title;
         this.description = description;
