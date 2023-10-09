@@ -1,3 +1,4 @@
+import CollectionWrapper from "./collectionWrapper";
 import createCounter from "./counter";
 
 const counter = createCounter();
@@ -10,6 +11,23 @@ class Task {
         this.dueDate = dueDate;
         this.priority = priority;
         this.isDone = false;
+    }
+
+    hasChecklist() {
+        return this.checklist !== undefined;
+    }
+
+    createChecklist() {
+        if (this.hasChecklist()) return;
+        this.checklist = new CollectionWrapper();
+    }
+
+    getChecklist() {
+        return this.checklist;
+    }
+
+    deleteChecklist() {
+        this.checklist = undefined;
     }
 }
 
