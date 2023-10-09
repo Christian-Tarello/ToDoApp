@@ -1,33 +1,19 @@
-class Project {
-    constructor(name, tasks) {
+import CollectionWrapper from "./collectionWrapper";
+
+class Project extends CollectionWrapper {
+    constructor(name, items) {
+        super(items);
         this.name = name;
-        this.tasks = tasks;
     }
 
-    addTask(task) {
-        this.tasks.push(task)
+    getDueToday() {
+        // Return an array of tasks due today
+        return;
     }
 
-    insertTask(task, position) {
-        this.tasks.splice(position, 0, task)
-    }
-
-    removeTaskByName(taskName) {
-        const index = this.tasks.find((task) => task.name === taskName);
-        this.removeTaskById(index);
-    }
-
-    removeTaskByPosition(position) {
-        this.tasks.splice(position, 1);
-    }
-
-    getTaskByName(taskName) {
-        const index = this.tasks.find((task) => task.name === taskName);
-        return this.getTaskByIndex(index);
-    }
-
-    getTaskByPosition(position) {
-        return this.tasks(position);
+    getDueThisWeek() {
+        // Return an array of tasks due this week
+        return;
     }
 }
 
