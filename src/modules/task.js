@@ -14,6 +14,14 @@ class Task {
         this.isDone = false;
     }
 
+    get id() {
+        return this.id;
+    }
+
+    set id(id) {
+        return;
+    }
+
     hasChecklist() {
         return this.checklist !== undefined;
     }
