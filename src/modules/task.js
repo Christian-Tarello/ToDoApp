@@ -31,6 +31,7 @@ class Task {
 
     setUndone() {
         this.isDone = false;
+        this.checklist.setUndone();
     }
 
     toggleDone() {
@@ -39,10 +40,6 @@ class Task {
         } else {
             this.setDone();
         }
-    }
-
-    hasEmptyChecklist() {
-        return this.checklist.items.length === 0;
     }
 
     cleanChecklist() {

@@ -27,6 +27,10 @@ export default class CollectionWrapper {
         return this.items[position]; 
     }
 
+    isEmpty() {
+        return this.items.length === 0;
+    }
+
     items() {
         return this.items;
     }
