@@ -26,7 +26,7 @@ class Task {
 
     setDone() {
         this.isDone = true;
-        this.checklist.items.forEach((item) => {item.isDone = true});
+        this.checklist.items.forEach((item) => item.isDone());
     }
 
     setUndone() {
