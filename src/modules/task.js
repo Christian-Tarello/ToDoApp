@@ -12,6 +12,8 @@ class Task {
         this.dueDate = dueDate;
         this.priority = priority;
         this.isDone = false;
+
+        this.checklist = new CollectionWrapper();
     }
 
     get id() {
@@ -22,21 +24,12 @@ class Task {
         return;
     }
 
-    hasChecklist() {
-        return this.checklist !== undefined;
+    hasEmptyChecklist() {
+        return this.checklist.items.length === 0;
     }
 
-    createChecklist() {
-        if (this.hasChecklist()) return;
+    cleanChecklist() {
         this.checklist = new CollectionWrapper();
-    }
-
-    getChecklist() {
-        return this.checklist;
-    }
-
-    deleteChecklist() {
-        this.checklist = undefined;
     }
 }
 
