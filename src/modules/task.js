@@ -24,6 +24,23 @@ class Task {
         return;
     }
 
+    setDone() {
+        this.isDone = true;
+        this.checklist.items.forEach((item) => {item.isDone = true});
+    }
+
+    setUndone() {
+        this.isDone = false;
+    }
+
+    toggleDone() {
+        if (this.isDone) {
+            this.setUndone();
+        } else {
+            this.setDone();
+        }
+    }
+
     hasEmptyChecklist() {
         return this.checklist.items.length === 0;
     }
