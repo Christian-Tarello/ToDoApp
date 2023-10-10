@@ -41,10 +41,6 @@ class Task {
             this.setDone();
         }
     }
-
-    cleanChecklist() {
-        this.checklist = new Checklist();
-    }
 }
 
 /* In case it ever becomes a factory function instead */
