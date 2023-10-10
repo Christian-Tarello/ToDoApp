@@ -1,4 +1,4 @@
-import CollectionWrapper from "./collectionWrapper";
+import Checklist from "./checklist";
 import createCounter from "./counter";
 import Priority from "./priority";
 
@@ -13,7 +13,7 @@ class Task {
         this.priority = priority;
         this.isDone = false;
 
-        this.checklist = new CollectionWrapper();
+        this.checklist = new Checklist();
     }
 
     get id() {
@@ -26,7 +26,7 @@ class Task {
 
     setDone() {
         this.isDone = true;
-        this.checklist.items.forEach((item) => item.isDone());
+        this.checklist.setDone();
     }
 
     setUndone() {
@@ -46,7 +46,7 @@ class Task {
     }
 
     cleanChecklist() {
-        this.checklist = new CollectionWrapper();
+        this.checklist = new Checklist();
     }
 }
 
