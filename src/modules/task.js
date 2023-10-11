@@ -20,10 +20,6 @@ class Task {
         return this.id;
     }
 
-    set id(id) {
-        return;
-    }
-
     setDone() {
         this.isDone = true;
         this.checklist.setDone();
