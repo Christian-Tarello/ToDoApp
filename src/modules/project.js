@@ -1,3 +1,4 @@
+import { getDay, isThisWeek, isToday, isValid } from "date-fns";
 import CollectionWrapper from "./collectionWrapper";
 
 class Project extends CollectionWrapper {
@@ -7,13 +8,18 @@ class Project extends CollectionWrapper {
     }
 
     getDueToday() {
-        // Return an array of tasks due today
-        return;
+        const due = this.items.filter((item) => 
+            isValid(item.dueDate) && isToday(item.dueDate)
+        );
+        return due;
     }
 
     getDueThisWeek() {
-        // Return an array of tasks due this week
-        return;
+        const todayWeekDay = getDay(new Date());
+        const due = this.items.filter((item) =>
+            isValid(item.dueDate) && isThisWeek(item.dueDate, {weekStartsOn: todayWeekDay})   
+        );
+        return due;
     }
 
     getById(id) {
