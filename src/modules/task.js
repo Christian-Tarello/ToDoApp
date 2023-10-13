@@ -4,7 +4,7 @@ import Priority from "./priority";
 
 const counter = createCounter();
 
-class Task {
+export default class Task {
     constructor(title, description, dueDate, priority = Priority.UNSET) {
         this.id = counter();
         this.title = title;

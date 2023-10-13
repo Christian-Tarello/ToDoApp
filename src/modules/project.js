@@ -1,7 +1,7 @@
 import { getDay, isThisWeek, isToday, isValid } from "date-fns";
 import CollectionWrapper from "./collectionWrapper";
 
-class Project extends CollectionWrapper {
+export default class Project extends CollectionWrapper {
     constructor(name, items) {
         super(items);
         this.name = name;
