@@ -38,8 +38,3 @@ class Task {
         }
     }
 }
-
-/* In case it ever becomes a factory function instead */
-export default function createTask(...args) {
-    return new Task(...args);
-}

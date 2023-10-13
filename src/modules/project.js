@@ -32,8 +32,3 @@ class Project extends CollectionWrapper {
         this.remove(position);
     }
 }
-
-/* In case it ever becomes a factory function instead */
-export default function createProject(...args) {
-    return new Project(...args);
-}
