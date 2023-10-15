@@ -22,7 +22,7 @@ export default class Component {
     }
 
     setParent(component) {
-        this.parent.remove(component);
+        this.parent?.remove(component);
         this.parent = component;
     }
 
@@ -37,8 +37,10 @@ export default class Component {
 
     remove(component) {
         const index = this.components.findIndex((item) => item === component);
-        this.components[index].setParent();
-        this.components.splice(index, 1);
+        if (index !== -1) {
+            this.components[index].setParent();
+            this.components.splice(index, 1);
+        }
     }
 
     getComponents() {
