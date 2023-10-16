@@ -1,4 +1,4 @@
-import CollectionWrapper from "./collectionWrapper";
+import CollectionWrapper from "../utils/collectionWrapper";
 
 export default class Checklist extends CollectionWrapper {
     setDone() {

@@ -1,6 +1,6 @@
 import Checklist from "./checklist";
-import createCounter from "./counter";
-import Priority from "./priority";
+import createCounter from "../utils/counter";
+import Priority from "../utils/priority";
 
 const counter = createCounter();
 

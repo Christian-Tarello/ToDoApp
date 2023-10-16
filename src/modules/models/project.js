@@ -1,5 +1,5 @@
 import { getDay, isThisWeek, isToday, isValid } from "date-fns";
-import CollectionWrapper from "./collectionWrapper";
+import CollectionWrapper from "../utils/collectionWrapper";
 
 export default class Project extends CollectionWrapper {
     constructor(name, items) {
