@@ -1,41 +1,26 @@
+import PubSub from "pubsub-js";
+import Messages from "../../utils/messages";
 import TaskInputController from "./taskInputController";
 import TaskInputView from "../../views/taskInputView";
 
 export default class ProjectController {
-    constructor() {
-        this.view = undefined;
-        this.addTaskView = undefined;
-        this.taskInputView = undefined;
-    }
-
-    setView(view) {
+    constructor(view) {
         this.view = view;
+        this.setInteractions();
     }
 
-    setAddTaskView(view) {
-        this.addTaskView = view;
+    setInteractions() {
+        PubSub.subscribe(Messages.ADD_TASK_INPUT, () => {this.addTaskInput()});
+        PubSub.subscribe(Messages.ADD_TASK, (msg, task) => {this.addTask(task)});
     }
 
     addTaskInput() {
-        const taskInputController = new TaskInputController(this);
-        this.taskInputView = new TaskInputView(taskInputController);
-        this.addTaskView.disable();
-        this.view.addItem(this.taskInputView.build());
-    }
-
-    removeTaskInput() {
-        // Removes all references to it so that it gets garbage collected sooner
-        this.taskInputView.remove();
-        this.taskInputView = undefined;
-        this.addTaskView.enable();
+        const taskController = new TaskInputController(new TaskInputView());
+        this.view.addItem(taskController.view.build());
     }
 
     addTask(task) {
         // Create a task using a view and add it to the view
+        console.log(task);
     }
-
-    
-
-    
-
 }

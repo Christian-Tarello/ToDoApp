@@ -16,10 +16,6 @@ export default class Task {
         this.checklist = new Checklist();
     }
 
-    get id() {
-        return this.id;
-    }
-
     setDone() {
         this.isDone = true;
         this.checklist.setDone();

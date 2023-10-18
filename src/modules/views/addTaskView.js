@@ -1,6 +1,8 @@
+import PubSub from 'pubsub-js';
+import Messages from '../utils/messages';
+
 export default class AddTaskView {
-    constructor(controller) {
-        this.controller = controller;
+    constructor() {
         this.element = undefined;
     }
 
@@ -14,7 +16,7 @@ export default class AddTaskView {
     }
 
     setInteractions() {
-        this.element.addEventListener("click", () => {this.controller.addTaskInput()});
+        this.element.addEventListener("click", () => {PubSub.publish(Messages.ADD_TASK_INPUT)});
     }
 
     disable() {

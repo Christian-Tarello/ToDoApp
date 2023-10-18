@@ -1,7 +1,10 @@
+import PubSub from "pubsub-js";
+import Messages from "../utils/messages";
+import TaskFields from "../utils/taskFields";
+import Priority from "../utils/priority";
+
 export default class TaskInputView {
-    constructor(controller) {
-        this.controller = controller;
-        this.controller.setView(this);
+    constructor() {
         this.element = undefined;
     }
 
@@ -13,12 +16,26 @@ export default class TaskInputView {
             <ul>
                 <li>
                     <label for="taskTitle">Title</label>
-                    <input type="text" id="taskTitle" name="taskTitle" required>
+                    <input type="text" id="taskTitle" name="${TaskFields.TITLE}" required>
                 </li>
                 <li>
                     <label for="taskDescription">Description</label>
-                    <input type="text" id="taskDescription" name="taskDescription" required>
+                    <input type="text" id="taskDescription" name="${TaskFields.DESCRIPTION}" required>
                 </li>
+                <li>
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority" name="${TaskFields.PRIORITY}">
+                        <option value="${Priority.LOW}">Low</option>
+                        <option value="${Priority.MEDIUM}">Medium</option>
+                        <option value="${Priority.HIGH}">High</option>
+                        <option value="${Priority.UNSET}" selected>Unset</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="taskDueDate">Due</label>
+                    <input type="date" id="taskDueDate" name="${TaskFields.DUE_DATE}">
+                </li>
+
             </ul>
             <button type="submit">Create Task</button>
             <button type="button">Cancel</button>             
@@ -29,11 +46,13 @@ export default class TaskInputView {
     }
 
     setInteractions() {
-        const submitButton = this.element.querySelector('button[type="submit"]');
         const cancelButton = this.element.querySelector('button[type="button"]');
 
-        submitButton.addEventListener("click", (e) => {this.controller.addTask(e)});
-        cancelButton.addEventListener("click", (e) => {this.controller.removeTaskInput(e)});
+        this.element.addEventListener("submit", (e) => {
+            e.preventDefault();
+            PubSub.publish(Messages.PROCESS_TASK_SUBMISSION, e)
+        });
+        cancelButton.addEventListener("click", () => {PubSub.publish(Messages.REMOVE_TASK_INPUT)});
     }
 
     remove() {
