@@ -1,8 +1,8 @@
 const Priority = Object.freeze({
-    HIGH: 3,
-    MEDIUM: 2,
-    LOW: 1,
-    UNSET: 0
+    HIGH: 'High',
+    MEDIUM: 'Medium',
+    LOW: "Low",
+    UNSET: "Unset"
 });
 
 export default Priority;
