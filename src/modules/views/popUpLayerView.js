@@ -6,7 +6,6 @@ export default class PopUpLayerView {
 
     build() {
         this.element = document.createElement('div');
-        this.element.append(this.addTaskView.build());
         return this.element;
     }
 
