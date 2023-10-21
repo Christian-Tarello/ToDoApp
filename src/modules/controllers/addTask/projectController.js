@@ -1,7 +1,5 @@
 import PubSub from "pubsub-js";
 import Messages from "../../utils/messages";
-import TaskInputController from "./taskInputController";
-import TaskInputView from "../../views/taskInputView";
 import TaskView from "../../views/taskView";
 import TaskController from "./taskController";
 
@@ -13,14 +11,8 @@ export default class ProjectController {
     }
 
     setInteractions() {
-        PubSub.subscribe(Messages.ADD_TASK_INPUT, () => {this.addTaskInput()});
         PubSub.subscribe(Messages.ADD_TASK, (msg, task) => {this.addTask(task)});
         PubSub.subscribe(Messages.REMOVE_TASK, (msg, id) => {this.removeTask(id)});
-    }
-
-    addTaskInput() {
-        const taskController = new TaskInputController(new TaskInputView());
-        this.view.addItem(taskController.view.build());
     }
 
     addTask(task) {
