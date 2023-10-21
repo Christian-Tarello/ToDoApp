@@ -12,9 +12,7 @@ export default class TaskInputController {
 
     setInteractions() {
         this.subTokens.push(
-            PubSub.subscribe(Messages.REMOVE_TASK_INPUT, () => {this.removeTaskInput()})
-        );
-        this.subTokens.push(
+            PubSub.subscribe(Messages.REMOVE_TASK_INPUT, () => {this.removeTaskInput()}),
             PubSub.subscribe(Messages.PROCESS_TASK_SUBMISSION, (msg, e) => {this.processTaskSubmission(e)})
         );
     }
