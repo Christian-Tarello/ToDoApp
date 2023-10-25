@@ -29,7 +29,7 @@ export default class PopUpLayerController {
 
     removeScrollLock(popUpId) {
         this.scrollLocks.add(popUpId);
-        if (this.scrollLocks.keys.length === 0) {
+        if (this.scrollLocks.size === 0) {
             this.view.unlockScrolling();
         }
     }
@@ -41,7 +41,7 @@ export default class PopUpLayerController {
 
     removeClickLock(popUpId) {
         this.clickLocks.delete(popUpId);
-        if (this.clickLocks.keys.length === 0) {
+        if (this.clickLocks.size === 0) {
             this.view.unlockClicking();
         }
     }
