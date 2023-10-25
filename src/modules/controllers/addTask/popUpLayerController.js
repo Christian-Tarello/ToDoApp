@@ -11,15 +11,15 @@ export default class PopUpLayerController {
     }
 
     setInteractions() {
-        PubSub.subscribe(Messages.ADD_POP_UP, (msg, view) => {this.addPopUp(view)});
+        PubSub.subscribe(Messages.ADD_POP_UP, (msg, element) => {this.addPopUp(element)});
         PubSub.subscribe(Messages.ADD_SCROLL_LOCK, (msg, popUpId) => {this.addScrollLock(popUpId)});
         PubSub.subscribe(Messages.REMOVE_SCROLL_LOCK, (msg, popUpId) => {this.removeScrollLock(popUpId)});
         PubSub.subscribe(Messages.ADD_CLICK_LOCK, (msg, popUpId) => {this.addClickLock(popUpId)});
         PubSub.subscribe(Messages.REMOVE_CLICK_LOCK, (msg, popUpId) => {this.removeClickLock(popUpId)});
     }
 
-    addPopUp(view) {
-        this.view.addPopUp(view.build());
+    addPopUp(element) {
+        this.view.addPopUp(element);
     }
 
     addScrollLock(popUpId) {

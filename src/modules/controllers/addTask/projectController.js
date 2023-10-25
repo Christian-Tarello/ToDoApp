@@ -1,7 +1,5 @@
 import PubSub from "pubsub-js";
 import Messages from "../../utils/messages";
-import TaskView from "../../views/taskView";
-import TaskController from "./taskController";
 
 export default class ProjectController {
     constructor(view) {
@@ -13,14 +11,17 @@ export default class ProjectController {
     setInteractions() {
         PubSub.subscribe(Messages.ADD_TASK, (msg, task) => {this.addTask(task)});
         PubSub.subscribe(Messages.REMOVE_TASK, (msg, id) => {this.removeTask(id)});
+        PubSub.subscribe(Messages.BUILT_TASK, (msg, element) => {this.paintTask(element)});
     }
 
-    addTask(task) {
-        // Create a task using a view and add it to the view
+    addTask(task) {        
         this.project.add(task);
-        const taskController = new TaskController(new TaskView(task));
-        this.view.addItem(taskController.view.build());
+        PubSub.publish(Messages.BUILD_TASK, task.id);
         console.log(this.project);
+    }
+
+    paintTask(element) {
+        this.view.addItem(element);
     }
 
     removeTask(id) {

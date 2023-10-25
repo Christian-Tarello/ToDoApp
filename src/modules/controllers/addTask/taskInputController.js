@@ -1,7 +1,6 @@
 import PubSub from "pubsub-js";
 import Messages from "../../utils/messages";
 import TaskFields from "../../utils/taskFields";
-import Task from "../../models/task";
 
 export default class TaskInputController {
     constructor(view) {
@@ -29,9 +28,8 @@ export default class TaskInputController {
         const description = data.get(TaskFields.DESCRIPTION);
         const priority = data.get(TaskFields.PRIORITY);
         const dueDate = data.get(TaskFields.DUE_DATE);
-        const task = new Task(title, description, dueDate, priority)
 
-        PubSub.publish(Messages.ADD_TASK, task);
+        PubSub.publish(Messages.CREATE_TASK, {title, description, priority, dueDate});
         PubSub.publish(Messages.REMOVE_TASK_INPUT);
     }
 }

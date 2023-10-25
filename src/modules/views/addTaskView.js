@@ -16,7 +16,7 @@ export default class AddTaskView {
     }
 
     setInteractions() {
-        this.element.addEventListener("click", () => {PubSub.publish(Messages.ADD_TASK_INPUT)});
+        this.element.addEventListener("click", () => {PubSub.publish(Messages.BUILD_TASK_INPUT)});
     }
 
     disable() {

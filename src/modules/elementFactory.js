@@ -37,8 +37,8 @@ export default class ElementFactory {
     }
 
     setInteractions() {
-        PubSub.subscribe(Messages.BUILD_TASK, (id) => {this.buildTask(id)});
-        PubSub.subscribe(Messages.BUILD_PROJECT, (id) => {this.buildProject(id)});
+        PubSub.subscribe(Messages.BUILD_TASK, (msg, id) => {this.buildTask(id)});
+        PubSub.subscribe(Messages.BUILD_PROJECT, (msg, id) => {this.buildProject(id)});
         PubSub.subscribe(Messages.BUILD_TASK_INPUT, () => {this.buildTaskInput()});
     }
 }
