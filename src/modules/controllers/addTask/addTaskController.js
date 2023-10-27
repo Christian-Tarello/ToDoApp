@@ -2,9 +2,13 @@ import PubSub from "pubsub-js";
 import Messages from "../../utils/messages";
 
 export default class AddTaskController {
-    constructor(view) {
-        this.view = view;
+    constructor() {
+        this.view = undefined;
         this.setInteractions();
+    }
+
+    setView(view) {
+        this.view = view;
     }
 
     enable() {
