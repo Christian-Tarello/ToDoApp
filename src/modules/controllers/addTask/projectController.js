@@ -2,10 +2,14 @@ import PubSub from "pubsub-js";
 import Messages from "../../utils/messages";
 
 export default class ProjectController {
-    constructor(view) {
-        this.view = view;
-        this.project = this.view.project;
+    constructor(project) {
+        this.project = project;
         this.setInteractions();
+        this.view = undefined;
+    }
+
+    setView(view) {
+        this.view = view;
     }
 
     setInteractions() {

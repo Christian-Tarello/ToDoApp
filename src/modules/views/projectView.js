@@ -1,7 +1,8 @@
 export default class ProjectView {
-    constructor(addTaskView, project) {
+    constructor(controller, addTaskView) {
         this.addTaskView = addTaskView;
-        this.project = project;
+        this.controller = controller;
+        this.controller.setView(this);
         this.element = undefined;
     }
 

@@ -27,8 +27,8 @@ export default class ElementFactory {
     buildProject(id = 0) {
         const project = this.projectCollection[id];
         const addTaskView = new AddTaskView(new AddTaskController());
-        const projectController = new ProjectController(new ProjectView(addTaskView, project));
-        PubSub.publish(Messages.BUILT_PROJECT, projectController.view.build());
+        const projectView = new ProjectView(new ProjectController(project), addTaskView);
+        PubSub.publish(Messages.BUILT_PROJECT, projectView.build());
     }
     
     buildTaskInput(){
