@@ -4,7 +4,9 @@ import TaskFields from "../utils/taskFields";
 import Priority from "../utils/priority";
 
 export default class TaskInputView {
-    constructor() {
+    constructor(controller) {
+        this.controller = controller;
+        this.controller.setView(this);
         this.element = undefined;
     }
 
@@ -50,9 +52,9 @@ export default class TaskInputView {
 
         this.element.addEventListener("submit", (e) => {
             e.preventDefault();
-            PubSub.publish(Messages.PROCESS_TASK_SUBMISSION, e)
+            this.controller.processTaskSubmission(e);
         });
-        cancelButton.addEventListener("click", () => {PubSub.publish(Messages.REMOVE_TASK_INPUT)});
+        cancelButton.addEventListener("click", () => {this.controller.remove()});
     }
 
     remove() {

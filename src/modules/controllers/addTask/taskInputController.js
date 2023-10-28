@@ -3,22 +3,15 @@ import Messages from "../../utils/messages";
 import TaskFields from "../../utils/taskFields";
 
 export default class TaskInputController {
-    constructor(view) {
+    constructor() {
+        this.view = undefined;
+    }
+
+    setView(view) {
         this.view = view;
-        this.subTokens = [];
-        this.setInteractions();
     }
 
-    setInteractions() {
-        this.subTokens.push(
-            PubSub.subscribe(Messages.REMOVE_TASK_INPUT, () => {this.removeTaskInput()}),
-            PubSub.subscribe(Messages.PROCESS_TASK_SUBMISSION, (msg, e) => {this.processTaskSubmission(e)})
-        );
-    }
-
-    removeTaskInput() {
-        this.subTokens.forEach((subToken) => PubSub.unsubscribe(subToken));
-        this.subTokens = [];     
+    remove() {
         this.view.remove();
     }
 
@@ -31,5 +24,6 @@ export default class TaskInputController {
 
         PubSub.publish(Messages.CREATE_TASK, {title, description, priority, dueDate});
         PubSub.publish(Messages.REMOVE_TASK_INPUT);
+        this.remove();
     }
 }

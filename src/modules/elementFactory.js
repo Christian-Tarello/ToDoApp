@@ -31,9 +31,9 @@ export default class ElementFactory {
         PubSub.publish(Messages.BUILT_PROJECT, projectView.build());
     }
     
-    buildTaskInput(){
-        const controller = new TaskInputController(new TaskInputView());
-        PubSub.publish(Messages.BUILT_TASK_INPUT, controller.view.build());
+    buildTaskInput() {
+        const view = new TaskInputView(new TaskInputController());
+        PubSub.publish(Messages.BUILT_TASK_INPUT, view.build());
     }
 
     setInteractions() {
