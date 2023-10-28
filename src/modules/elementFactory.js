@@ -19,8 +19,8 @@ export default class ElementFactory {
         const project = this.projectCollection.find((item) => item.getById(id) !== undefined);
         if (project) {
             const task = project.getById(id);
-            const controller = new TaskController(new TaskView(task));
-            PubSub.publish(Messages.BUILT_TASK, controller.view.build());
+            const view = new TaskView(new TaskController(task));
+            PubSub.publish(Messages.BUILT_TASK, view.build());
         }
     }
 

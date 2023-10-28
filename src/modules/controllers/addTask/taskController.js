@@ -2,29 +2,36 @@ import PubSub from "pubsub-js";
 import Messages from "../../utils/messages";
 
 export default class TaskController {
-    constructor(view) {
+    constructor(task) {
+        this.task = task;
+        this.view = undefined;
+    }
+
+    setView(view) {
         this.view = view;
-        this.task = view.task;
-        this.subTokens = [];
-        this.setInteractions();
     }
 
-    setInteractions() {
-        this.subTokens.push(
-            PubSub.subscribe(Messages.REMOVE_TASK, (msg, id) => {this.removeTask(id)}),
-            PubSub.subscribe(Messages.TOGGLE_TASK, (msg, id) => {this.toggleTask(id)}),
-        )
+    getData() {
+        const data = {
+            title: this.task.title,
+            description: this.task.description,
+            priority: this.task.priority,
+            dueDate: this.task.dueDate,
+            isDone: this.task.isDone
+        }
+        return data;
     }
 
-    removeTask(id) {
-        if (id !== this.task.id) {return;}
-        this.subTokens.forEach((subToken) => PubSub.unsubscribe(subToken));
-        this.subTokens = [];
+    remove() {
         this.view.remove();
+        PubSub.publish(Messages.REMOVE_TASK, this.task.id)
     }
 
-    toggleTask(id) {
-        if (id !== this.task.id) {return;}
+    toggle() {
         this.task.toggleDone();
+    }
+
+    addEditTaskInput() {
+        PubSub.publish(Messages.ADD_EDIT_TASK_INPUT, this.task.id);
     }
 }
