@@ -1,5 +1,5 @@
 import PubSub from "pubsub-js";
-import Messages from "../../utils/messages";
+import Messages from "../utils/messages";
 
 export default class ProjectController {
     constructor(project) {

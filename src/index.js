@@ -1,10 +1,10 @@
-import PopUpLayerController from './modules/controllers/addTask/popUpLayerController';
+import PubSub from 'pubsub-js';
+import Messages from './modules/utils/messages';
+import PopUpLayerController from './modules/controllers/popUpLayerController';
 import Project from './modules/models/project';
 import PopUpLayerView from './modules/views/popUpLayerView';
 import ElementFactory from './modules/elementFactory';
 import ModelFactory from './modules/modelFactory';
-import PubSub from 'pubsub-js';
-import Messages from './modules/utils/messages';
 import './style.css';
 
 const contentHook = document.querySelector(".content");

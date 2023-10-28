@@ -1,6 +1,6 @@
 import PubSub from "pubsub-js";
-import Messages from "../../utils/messages";
-import TaskFields from "../../utils/taskFields";
+import Messages from "../utils/messages";
+import TaskFields from "../utils/taskFields";
 
 export default class TaskInputController {
     constructor() {
