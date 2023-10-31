@@ -22,9 +22,13 @@ export default class TaskController {
         return data;
     }
 
+    delete() {
+        this.remove();
+        PubSub.publish(Messages.REMOVE_TASK, this.task.id)
+    }
+
     remove() {
         this.view.remove();
-        PubSub.publish(Messages.REMOVE_TASK, this.task.id)
     }
 
     toggle() {
