@@ -1,6 +1,3 @@
-import PubSub from 'pubsub-js';
-import Messages from '../utils/messages';
-
 export default class AddTaskView {
     constructor(controller) {
         this.controller = controller;
