@@ -23,7 +23,6 @@ export default class TaskInputController {
         const dueDate = data.get(TaskFields.DUE_DATE);
 
         PubSub.publish(Messages.CREATE_TASK, {title, description, priority, dueDate});
-        PubSub.publish(Messages.REMOVE_TASK_INPUT);
         this.remove();
     }
 }

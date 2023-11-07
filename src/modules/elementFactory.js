@@ -12,33 +12,30 @@ import TaskInputView from "./views/taskInputView";
 export default class ElementFactory {
     constructor(projectCollection) {
         this.projectCollection = projectCollection;
-        this.setInteractions();
     }
 
     buildTask(id) {
         const project = this.projectCollection.find((item) => item.getById(id) !== undefined);
-        if (project) {
-            const task = project.getById(id);
-            const view = new TaskView(new TaskController(task));
-            PubSub.publish(Messages.BUILT_TASK, view.build());
-        }
+        const task = project.getById(id);
+        const view = new TaskView(new TaskController(task, this));
+        const element = view.build();
+        PubSub.publish(Messages.BUILT_TASK, element)
+        return element;
     }
 
-    buildProject(id = 0) {
+    buildProject(id) {
         const project = this.projectCollection[id];
-        const addTaskView = new AddTaskView(new AddTaskController());
-        const projectView = new ProjectView(new ProjectController(project), addTaskView);
-        PubSub.publish(Messages.BUILT_PROJECT, projectView.build());
+        const addTaskView = new AddTaskView(new AddTaskController(this));
+        const projectView = new ProjectView(new ProjectController(project, this), addTaskView);
+        const element = projectView.build()
+        PubSub.publish(Messages.BUILT_PROJECT, element);
+        return element;
     }
     
     buildTaskInput() {
         const view = new TaskInputView(new TaskInputController());
-        PubSub.publish(Messages.BUILT_TASK_INPUT, view.build());
-    }
-
-    setInteractions() {
-        PubSub.subscribe(Messages.BUILD_TASK, (msg, id) => {this.buildTask(id)});
-        PubSub.subscribe(Messages.BUILD_PROJECT, (msg, id) => {this.buildProject(id)});
-        PubSub.subscribe(Messages.BUILD_TASK_INPUT, () => {this.buildTaskInput()});
+        const element = view.build();
+        PubSub.publish(Messages.BUILT_TASK_INPUT, element);
+        return element;
     }
 }

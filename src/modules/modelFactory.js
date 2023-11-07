@@ -7,15 +7,16 @@ export default class ModelFactory {
     constructor() {
         this.setInteractions();
     }
-
     createTask(data) {
         const task = new Task(data.title, data.description, data.dueDate, data.priority);
-        PubSub.publish(Messages.ADD_TASK, task);
+        PubSub.publish(Messages.NEW_TASK, task);
+        return task;
     }
 
     createProject(data) {
         const project = new Project(data.name, data.items);
-        PubSub.publish(Messages.ADD_PROJECT, project);
+        PubSub.publish(Messages.NEW_PROJECT, project);
+        return project;
     }
 
     setInteractions() {

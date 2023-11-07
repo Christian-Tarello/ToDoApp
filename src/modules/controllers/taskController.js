@@ -36,6 +36,6 @@ export default class TaskController {
     }
 
     addEditTaskInput() {
-        PubSub.publish(Messages.ADD_EDIT_TASK_INPUT, this.task.id);
+        // ...
     }
 }

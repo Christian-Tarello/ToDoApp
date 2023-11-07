@@ -18,14 +18,6 @@ export default class AddTaskView {
     }
 
     setInteractions() {
-        this.element.addEventListener("click", () => {PubSub.publish(Messages.BUILD_TASK_INPUT)});
-    }
-
-    disable() {
-        this.element.style.visibility = 'hidden';
-    }
-
-    enable() {
-        this.element.style.visibility = "visible";
+        this.element.addEventListener("click", () => {this.controller.addTaskInput()});
     }
 }
