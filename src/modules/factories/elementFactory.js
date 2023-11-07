@@ -1,13 +1,13 @@
 import PubSub from "pubsub-js";
-import Messages from "./utils/messages";
-import TaskController from "./controllers/taskController";
-import TaskView from "./views/taskView";
-import ProjectController from "./controllers/projectController";
-import ProjectView from "./views/projectView";
-import AddTaskController from "./controllers/addTaskController";
-import AddTaskView from "./views/addTaskView";
-import TaskInputController from "./controllers/taskInputController";
-import TaskInputView from "./views/taskInputView";
+import Messages from "../utils/messages";
+import TaskController from "../controllers/taskController";
+import TaskView from "../views/taskView";
+import ProjectController from "../controllers/projectController";
+import ProjectView from "../views/projectView";
+import AddTaskController from "../controllers/addTaskController";
+import AddTaskView from "../views/addTaskView";
+import TaskInputController from "../controllers/taskInputController";
+import TaskInputView from "../views/taskInputView";
 
 export default class ElementFactory {
     constructor(projectCollection) {

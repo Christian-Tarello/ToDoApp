@@ -1,7 +1,7 @@
 import PubSub from "pubsub-js";
-import Messages from "./utils/messages";
-import Task from "./models/task";
-import Project from "./models/project";
+import Messages from "../utils/messages";
+import Task from "../models/task";
+import Project from "../models/project";
 
 export default class ModelFactory {
     constructor() {

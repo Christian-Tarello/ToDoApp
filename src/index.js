@@ -1,7 +1,7 @@
 import PopUpLayerController from './modules/controllers/popUpLayerController';
 import PopUpLayerView from './modules/views/popUpLayerView';
-import ElementFactory from './modules/elementFactory';
-import ModelFactory from './modules/modelFactory';
+import ElementFactory from './modules/factories/elementFactory';
+import ModelFactory from './modules/factories/modelFactory';
 import './style.css';
 
 const contentHook = document.querySelector(".content");
