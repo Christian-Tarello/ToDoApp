@@ -9,13 +9,13 @@ export default class ModelFactory {
     }
     createTask(data) {
         const task = new Task(data.title, data.description, data.dueDate, data.priority);
-        PubSub.publish(Messages.NEW_TASK, task);
+        PubSub.publish(Messages.TASK, task);
         return task;
     }
 
     createProject(data) {
         const project = new Project(data.name, data.items);
-        PubSub.publish(Messages.NEW_PROJECT, project);
+        PubSub.publish(Messages.PROJECT, project);
         return project;
     }
 

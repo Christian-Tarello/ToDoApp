@@ -8,8 +8,9 @@ const PopUpMessages = Object.freeze({
 });
 
 const ModelMessages = Object.freeze({
-    NEW_TASK: "NEW TASK",
-    NEW_PROJECT: "NEW PROJECT",
+    MODEL_TOPIC: "MODEL",
+    TASK: "MODEL.TASK",
+    PROJECT: "MODEL.PROJECT",
 });
 
 const ModelRequestMessages = Object.freeze({
