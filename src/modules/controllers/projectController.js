@@ -15,7 +15,7 @@ export default class ProjectController {
 
     setInteractions() {
         PubSub.subscribe(Messages.TASK, (msg, task) => {this.addTask(task)});
-        PubSub.subscribe(Messages.REMOVE_TASK, (msg, id) => {this.removeTask(id)});
+        PubSub.subscribe(Messages.REMOVE_TASK_ELEMENT, (msg, id) => {this.removeTask(id)});
     }
 
     addTask(task) {        

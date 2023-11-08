@@ -19,7 +19,7 @@ export default class ElementFactory {
         const task = project.getById(id);
         const view = new TaskView(new TaskController(task, this));
         const element = view.build();
-        PubSub.publish(Messages.BUILT_TASK, element)
+        PubSub.publish(Messages.TASK_ELEMENT, element)
         return element;
     }
 
@@ -28,14 +28,14 @@ export default class ElementFactory {
         const addTaskView = new AddTaskView(new AddTaskController(this));
         const projectView = new ProjectView(new ProjectController(project, this), addTaskView);
         const element = projectView.build()
-        PubSub.publish(Messages.BUILT_PROJECT, element);
+        PubSub.publish(Messages.PROJECT_ELEMENT, element);
         return element;
     }
     
     buildTaskInput() {
         const view = new TaskInputView(new TaskInputController());
         const element = view.build();
-        PubSub.publish(Messages.BUILT_TASK_INPUT, element);
+        PubSub.publish(Messages.TASK_CREATION_INPUT_ELEMENT, element);
         return element;
     }
 }
