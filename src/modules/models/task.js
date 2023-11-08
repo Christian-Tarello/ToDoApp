@@ -14,6 +14,18 @@ export default class Task {
         this.isDone = false;
 
         this.checklist = new Checklist();
+        this.project = undefined;
+    }
+
+    unlink() {
+        if (this.project) {
+            this.project.removeById(this.id);
+        }
+    }
+
+    linkProject(project) {
+        this.unlink();
+        this.project = project;
     }
 
     setDone() {

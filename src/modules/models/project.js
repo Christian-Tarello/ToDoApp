@@ -7,6 +7,11 @@ export default class Project extends CollectionWrapper {
         this.name = name;
     }
 
+    add(item) {
+        super.add(item);
+        item.linkProject(this);
+    }
+
     getDueToday() {
         const due = this.items.filter((item) => 
             isValid(item.dueDate) && isToday(item.dueDate)
