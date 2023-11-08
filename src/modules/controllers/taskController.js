@@ -1,5 +1,5 @@
 import PubSub from "pubsub-js";
-import Messages from "../utils/messages";
+import Topics from "../utils/topics";
 
 export default class TaskController {
     constructor(task) {
@@ -24,7 +24,7 @@ export default class TaskController {
 
     delete() {
         this.remove();
-        PubSub.publish(Messages.REMOVE_TASK, this.task.id)
+        PubSub.publish(Topics.REMOVE_TASK, this.task.id)
     }
 
     remove() {

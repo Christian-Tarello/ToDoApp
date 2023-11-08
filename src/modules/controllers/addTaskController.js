@@ -1,5 +1,5 @@
 import PubSub from "pubsub-js";
-import Messages from "../utils/messages";
+import Topics from "../utils/topics";
 
 export default class AddTaskController {
     constructor(elementFactory) {
@@ -13,6 +13,6 @@ export default class AddTaskController {
 
     addTaskInput() {
         const element = this.elementFactory.buildTaskInput();
-        PubSub.publish(Messages.ADD_POP_UP, element);
+        PubSub.publish(Topics.ADD_POP_UP, element);
     }
 }

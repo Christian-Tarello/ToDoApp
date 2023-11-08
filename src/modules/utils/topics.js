@@ -1,4 +1,4 @@
-const PopUpMessages = Object.freeze({
+const PopUpTopics = Object.freeze({
     POP_UP_TOPIC: "POP_UP",
     ADD_POP_UP: "POP_UP.ADD",
     ADD_SCROLL_LOCK: "POP_UP.ADD_SCROLL_LOCK",
@@ -7,19 +7,19 @@ const PopUpMessages = Object.freeze({
     REMOVE_CLICK_LOCK: "POP_UP.REMOVE_CLICK_LOCK",
 });
 
-const ModelMessages = Object.freeze({
+const ModelTopics = Object.freeze({
     MODEL_TOPIC: "MODEL",
     TASK: "MODEL.TASK",
     PROJECT: "MODEL.PROJECT",
 });
 
-const ModelRequestMessages = Object.freeze({
+const ModelRequestTopics = Object.freeze({
     MODEL_CREATION_TOPIC: "MODEL_CREATION",
     CREATE_TASK: "MODEL_CREATION.TASK",
     CREATE_PROJECT: "MODEL_CREATION.PROJECT",
 });
 
-const ElementMessages = Object.freeze({
+const ElementTopics = Object.freeze({
     ELEMENT_TOPIC: "ELEMENT",
     TASK_ELEMENT: "ELEMENT.TASK",
     PROJECT_ELEMENT: "ELEMENT.TASK",
@@ -27,18 +27,18 @@ const ElementMessages = Object.freeze({
     TASK_EDITION_INPUT_ELEMENT: "ELEMENT.TASK_EDITION_INPUT",
 });
 
-const ElementRemovalMessages = Object.freeze({
+const ElementRemovalTopics = Object.freeze({
     ELEMENT_REMOVAL_TOPIC: "ELEMENT.REMOVE",
     REMOVE_TASK_CREATION_INPUT_ELEMENT: "ELEMENT.REMOVE.TASK_CREATION_INPUT",
     REMOVE_TASK_ELEMENT: "ELEMENT.REMOVE.TASK",
 });
 
-const Messages = Object.freeze({
-    ...PopUpMessages,
-    ...ModelMessages,
-    ...ModelRequestMessages,
-    ...ElementMessages,
-    ...ElementRemovalMessages
+const Topics = Object.freeze({
+    ...PopUpTopics,
+    ...ModelTopics,
+    ...ModelRequestTopics,
+    ...ElementTopics,
+    ...ElementRemovalTopics
 });
 
-export default Messages;
+export default Topics;

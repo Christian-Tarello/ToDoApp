@@ -1,5 +1,5 @@
 import PubSub from "pubsub-js";
-import Messages from "../utils/messages";
+import Topics from "../utils/topics";
 
 export default class PopUpLayerController {
     constructor(view) {
@@ -11,11 +11,11 @@ export default class PopUpLayerController {
     }
 
     setInteractions() {
-        PubSub.subscribe(Messages.ADD_POP_UP, (msg, element) => {this.addPopUp(element)});
-        PubSub.subscribe(Messages.ADD_SCROLL_LOCK, (msg, popUpId) => {this.addScrollLock(popUpId)});
-        PubSub.subscribe(Messages.REMOVE_SCROLL_LOCK, (msg, popUpId) => {this.removeScrollLock(popUpId)});
-        PubSub.subscribe(Messages.ADD_CLICK_LOCK, (msg, popUpId) => {this.addClickLock(popUpId)});
-        PubSub.subscribe(Messages.REMOVE_CLICK_LOCK, (msg, popUpId) => {this.removeClickLock(popUpId)});
+        PubSub.subscribe(Topics.ADD_POP_UP, (msg, element) => {this.addPopUp(element)});
+        PubSub.subscribe(Topics.ADD_SCROLL_LOCK, (msg, popUpId) => {this.addScrollLock(popUpId)});
+        PubSub.subscribe(Topics.REMOVE_SCROLL_LOCK, (msg, popUpId) => {this.removeScrollLock(popUpId)});
+        PubSub.subscribe(Topics.ADD_CLICK_LOCK, (msg, popUpId) => {this.addClickLock(popUpId)});
+        PubSub.subscribe(Topics.REMOVE_CLICK_LOCK, (msg, popUpId) => {this.removeClickLock(popUpId)});
     }
 
     addPopUp(element) {

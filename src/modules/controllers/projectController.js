@@ -1,5 +1,5 @@
 import PubSub from "pubsub-js";
-import Messages from "../utils/messages";
+import Topics from "../utils/topics";
 
 export default class ProjectController {
     constructor(project, elementFactory) {
@@ -14,8 +14,8 @@ export default class ProjectController {
     }
 
     setInteractions() {
-        PubSub.subscribe(Messages.TASK, (msg, task) => {this.addTask(task)});
-        PubSub.subscribe(Messages.REMOVE_TASK_ELEMENT, (msg, id) => {this.removeTask(id)});
+        PubSub.subscribe(Topics.TASK, (msg, task) => {this.addTask(task)});
+        PubSub.subscribe(Topics.REMOVE_TASK_ELEMENT, (msg, id) => {this.removeTask(id)});
     }
 
     addTask(task) {        
