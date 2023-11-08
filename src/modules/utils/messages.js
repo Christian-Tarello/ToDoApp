@@ -1,4 +1,4 @@
-const PopupMessages = Object.freeze({
+const PopUpMessages = Object.freeze({
     ADD_POP_UP: "ADD POP UP",
     ADD_SCROLL_LOCK: "ADD SCROLL LOCK",
     REMOVE_SCROLL_LOCK: "REMOVE_SCROLL_LOCK",
@@ -29,7 +29,7 @@ const ElementRemovalMessages = Object.freeze({
 });
 
 const Messages = Object.freeze({
-    ...PopupMessages,
+    ...PopUpMessages,
     ...ModelMessages,
     ...ModelRequestMessages,
     ...ElementMessages,
