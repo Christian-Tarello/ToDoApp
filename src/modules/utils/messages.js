@@ -14,8 +14,9 @@ const ModelMessages = Object.freeze({
 });
 
 const ModelRequestMessages = Object.freeze({
-    CREATE_TASK: "CREATE TASK",
-    CREATE_PROJECT: "CREATE PROJECT",
+    MODEL_CREATION_TOPIC: "MODEL_CREATION",
+    CREATE_TASK: "MODEL_CREATION.TASK",
+    CREATE_PROJECT: "MODEL_CREATION.PROJECT",
 });
 
 const ElementMessages = Object.freeze({
