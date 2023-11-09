@@ -13,12 +13,6 @@ const ModelTopics = Object.freeze({
     PROJECT: "MODEL.PROJECT",
 });
 
-const ModelRequestTopics = Object.freeze({
-    MODEL_CREATION_TOPIC: "MODEL_CREATION",
-    CREATE_TASK: "MODEL_CREATION.TASK",
-    CREATE_PROJECT: "MODEL_CREATION.PROJECT",
-});
-
 const ElementTopics = Object.freeze({
     ELEMENT_TOPIC: "ELEMENT",
     TASK_ELEMENT: "ELEMENT.TASK",
@@ -37,7 +31,6 @@ const ElementRemovalTopics = Object.freeze({
 const Topics = Object.freeze({
     ...PopUpTopics,
     ...ModelTopics,
-    ...ModelRequestTopics,
     ...ElementTopics,
     ...ElementRemovalTopics
 });
