@@ -18,10 +18,4 @@ export default class Checklist extends CollectionWrapper {
     toggleDone() {
         this.items.forEach((item) => item.toggleDone());
     }
-
-    addEmptyItem() {
-        const item = new ChecklistItem(''); 
-        this.add(item);
-        return item;
-    } 
 }
