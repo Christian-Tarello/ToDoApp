@@ -6,11 +6,9 @@ import './style.css';
 
 const contentHook = document.querySelector(".content");
 
-
-const modelFactory = new ModelFactory();
 const elementFactory = new ElementFactory();
 
-const testProject = modelFactory.createProject({name: 'test'});
+const testProject = ModelFactory.createProject('test');
 const projectElement = elementFactory.buildProject(testProject);
 
 const popUpLayerController = new PopUpLayerController(new PopUpLayerView());

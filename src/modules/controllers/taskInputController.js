@@ -1,6 +1,7 @@
 import PubSub from "pubsub-js";
 import Topics from "../utils/topics";
 import TaskFields from "../utils/taskFields";
+import ModelFactory from "../factories/modelFactory";
 
 export default class TaskInputController {
     constructor() {
@@ -22,7 +23,8 @@ export default class TaskInputController {
         const priority = data.get(TaskFields.PRIORITY);
         const dueDate = data.get(TaskFields.DUE_DATE);
 
-        PubSub.publish(Topics.CREATE_TASK, {title, description, priority, dueDate});
+        const task = ModelFactory.createTask(title, description, priority, dueDate);
+
         this.remove();
     }
 }
