@@ -8,8 +8,12 @@ const contentHook = document.querySelector(".content");
 
 
 const modelFactory = new ModelFactory();
-const elementFactory = new ElementFactory([modelFactory.createProject({name: 'test'})]);
+const elementFactory = new ElementFactory();
+
+const testProject = modelFactory.createProject({name: 'test'});
+const projectElement = elementFactory.buildProject(testProject);
+
 const popUpLayerController = new PopUpLayerController(new PopUpLayerView());
 
-contentHook.append(elementFactory.buildProject(0));
+contentHook.append(projectElement);
 contentHook.append(popUpLayerController.view.build());

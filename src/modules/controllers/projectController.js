@@ -20,7 +20,8 @@ export default class ProjectController {
 
     addTask(task) {        
         this.project.add(task);
-        this.view.addItem(this.elementFactory.buildTask(task.id));
+        const element = this.elementFactory.buildTask(task);
+        this.view.addItem(element);
         console.log(this.project);
     }
 

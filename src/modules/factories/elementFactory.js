@@ -14,13 +14,7 @@ import ChecklistItemView from "../views/checklistItemView";
 import ChecklistItemController from "../controllers/checklistItemController";
 
 export default class ElementFactory {
-    constructor(projectCollection) {
-        this.projectCollection = projectCollection;
-    }
-
-    buildTask(id) {
-        const project = this.projectCollection.find((item) => item.getById(id) !== undefined);
-        const task = project.getById(id);
+    buildTask(task) {
         const checklist = task.checklist;
         const checklistView = new ChecklistView(
             new ChecklistController(
@@ -34,8 +28,7 @@ export default class ElementFactory {
         return element;
     }
 
-    buildProject(id) {
-        const project = this.projectCollection[id];
+    buildProject(project) {
         const addTaskView = new AddTaskView(new AddTaskController(this));
         const projectView = new ProjectView(new ProjectController(project, this), addTaskView);
         const element = projectView.build()
@@ -50,11 +43,7 @@ export default class ElementFactory {
         return element;
     }
 
-    buildChecklistItem(id, position) {
-        const project = this.projectCollection.find((item) => item.getById(id) !== undefined);
-        const task = project.getById(id);
-        const checklist = task.checklist;
-        const item = checklist.items[position];
+    buildChecklistItem(item) {
         const view = new ChecklistItemView(new ChecklistItemController(item));
         const element = view.build();
         PubSub.publish(Topics.CHECKLIST_ITEM_ELEMENT, element);

@@ -10,11 +10,8 @@ export default class ChecklistController {
     }
 
     addEmptyItem() {
-        this.checklist.addEmptyItem();
-        const element = this.elementFactory.buildChecklistItem(
-            this.checklist.id,
-            this.checklist.items.length - 1
-        );
+        const item = this.checklist.addEmptyItem();
+        const element = this.elementFactory.buildChecklistItem(item);
         this.view.addItem(element);
     }
 }
