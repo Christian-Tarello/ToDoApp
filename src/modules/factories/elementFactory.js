@@ -12,6 +12,8 @@ import ChecklistView from "../views/checklistView";
 import ChecklistController from "../controllers/checklistController";
 import ChecklistItemView from "../views/checklistItemView";
 import ChecklistItemController from "../controllers/checklistItemController";
+import PopUpLayerView from "../views/popUpLayerView";
+import PopUpLayerController from "../controllers/popUpLayerController";
 
 export default class ElementFactory {
     buildChecklist(checklist) {
@@ -60,6 +62,12 @@ export default class ElementFactory {
         const view = new ChecklistItemView(new ChecklistItemController(item));
         const element = view.build();
         PubSub.publish(Topics.CHECKLIST_ITEM_ELEMENT, element);
+        return element;
+    }
+
+    buildPopUpLayer() {
+        const controller = new PopUpLayerController(new PopUpLayerView());
+        const element = controller.view.build();
         return element;
     }
 }
