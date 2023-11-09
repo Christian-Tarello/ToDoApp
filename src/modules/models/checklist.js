@@ -6,6 +6,11 @@ export default class Checklist extends CollectionWrapper {
         this.id = id;
     }
 
+    add(item) {
+        super.add(item);
+        item.link(this);
+    }
+
     setDone() {
         this.items.forEach((item) => item.setDone());
     }
