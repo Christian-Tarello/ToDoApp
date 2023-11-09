@@ -24,7 +24,8 @@ export default class TaskController {
 
     delete() {
         this.remove();
-        PubSub.publish(Topics.REMOVE_TASK, this.task.id)
+        this.task.unlink();
+        PubSub.publish(Topics.REMOVE_TASK, this.task.id);
     }
 
     remove() {
