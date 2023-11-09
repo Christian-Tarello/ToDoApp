@@ -2,12 +2,15 @@ import PubSub from "pubsub-js";
 import Topics from "../utils/topics";
 
 export default class PopUpLayerController {
-    constructor(view) {
-        this.view = view;
-        this.element = undefined;
+    constructor() {
+        this.view = undefined;
         this.scrollLocks = new Set();
         this.clickLocks = new Set();
         this.setInteractions();
+    }
+
+    setView(view) {
+        this.view = view;
     }
 
     setInteractions() {

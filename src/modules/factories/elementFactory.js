@@ -66,8 +66,8 @@ export default class ElementFactory {
     }
 
     buildPopUpLayer() {
-        const controller = new PopUpLayerController(new PopUpLayerView());
-        const element = controller.view.build();
+        const view = new PopUpLayerView(new PopUpLayerController());
+        const element = view.build();
         return element;
     }
 }

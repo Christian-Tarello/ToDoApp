@@ -1,5 +1,7 @@
 export default class PopUpLayerView {
-    constructor() {
+    constructor(controller) {
+        this.controller = controller;
+        this.controller.setView(this);
         this.element = undefined;
         this.layeredElement = document.querySelector('body');
     }
