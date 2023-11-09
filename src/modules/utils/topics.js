@@ -11,6 +11,7 @@ const ModelTopics = Object.freeze({
     MODEL_TOPIC: "MODEL",
     TASK: "MODEL.TASK",
     PROJECT: "MODEL.PROJECT",
+    CHECKLIST_ITEM: "MODEL.CHECKLIST_ITEM",
 });
 
 const ElementTopics = Object.freeze({

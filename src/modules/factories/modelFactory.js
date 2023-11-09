@@ -2,6 +2,7 @@ import PubSub from "pubsub-js";
 import Topics from "../utils/topics";
 import Task from "../models/task";
 import Project from "../models/project";
+import ChecklistItem from "../models/checklistItem";
 
 export default class ModelFactory {
     static createTask(title, description, dueDate, priority) {
@@ -14,5 +15,11 @@ export default class ModelFactory {
         const project = new Project(name, items);
         PubSub.publish(Topics.PROJECT, project);
         return project;
+    }
+
+    static createChecklistItem(description) {
+        const item = new ChecklistItem(description);
+        PubSub.publish(Topics.CHECKLIST_ITEM, item);
+        return item;
     }
 }
