@@ -1,5 +1,4 @@
 import CollectionWrapper from "../utils/collectionWrapper";
-import ChecklistItem from "./checklistItem";
 
 export default class Checklist extends CollectionWrapper {
     constructor(id, items) {
