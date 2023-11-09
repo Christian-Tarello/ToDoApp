@@ -13,7 +13,7 @@ export default class Task {
         this.priority = priority;
         this.isDone = false;
 
-        this.checklist = new Checklist();
+        this.checklist = new Checklist(this.id);
         this.project = undefined;
     }
 

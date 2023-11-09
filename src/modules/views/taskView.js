@@ -1,7 +1,8 @@
 export default class TaskView {
-    constructor(controller) {
+    constructor(controller, checklistView) {
         this.controller = controller;
         this.controller.setView(this);
+        this.checklistView = checklistView;
         this.element = undefined;
         this.interactiveElements = {};
     }
@@ -11,6 +12,7 @@ export default class TaskView {
         this.element.append(this.createDoneToggle());
         this.element.append(this.createContentHook());
         this.element.append(this.createButtonRow());
+        this.element.append(this.checklistView.build());
         this.updateState();
         this.setInteractions();
         return this.element;
