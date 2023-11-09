@@ -1,6 +1,6 @@
 export default class ProjectView {
-    constructor(controller, addTaskView) {
-        this.addTaskView = addTaskView;
+    constructor(controller, addTaskButton) {
+        this.addTaskButton = addTaskButton;
         this.controller = controller;
         this.controller.setView(this);
         this.element = undefined;
@@ -9,7 +9,7 @@ export default class ProjectView {
     build() {
         this.element = document.createElement('div');
         this.element.append(document.createElement('div'));
-        this.element.append(this.addTaskView.build());
+        this.element.append(this.addTaskButton);
         return this.element;
     }
 

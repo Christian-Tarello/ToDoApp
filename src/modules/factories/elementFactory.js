@@ -14,24 +14,37 @@ import ChecklistItemView from "../views/checklistItemView";
 import ChecklistItemController from "../controllers/checklistItemController";
 
 export default class ElementFactory {
-    buildTask(task) {
-        const checklist = task.checklist;
-        const checklistView = new ChecklistView(
+    buildChecklist(checklist) {
+        const view = new ChecklistView(
             new ChecklistController(
                 checklist,
                 this
             )
         )
-        const view = new TaskView(new TaskController(task), checklistView);
+
+        const element = view.build();
+
+        return element;
+    }
+
+    buildTask(task) {
+        const checklistElement = this.buildChecklist(task.checklist)
+        const view = new TaskView(new TaskController(task), checklistElement);
         const element = view.build();
         PubSub.publish(Topics.TASK_ELEMENT, element)
         return element;
     }
 
+    buildAddTaskButton() {
+        const view = new AddTaskView(new AddTaskController(this));
+        const element = view.build();
+        return element;
+    }
+
     buildProject(project) {
-        const addTaskView = new AddTaskView(new AddTaskController(this));
-        const projectView = new ProjectView(new ProjectController(project, this), addTaskView);
-        const element = projectView.build()
+        const addTaskElement = this.buildAddTaskButton();
+        const projectView = new ProjectView(new ProjectController(project, this), addTaskElement);
+        const element = projectView.build();
         PubSub.publish(Topics.PROJECT_ELEMENT, element);
         return element;
     }
