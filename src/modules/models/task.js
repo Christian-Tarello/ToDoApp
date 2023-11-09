@@ -23,7 +23,7 @@ export default class Task {
         }
     }
 
-    linkProject(project) {
+    link(project) {
         this.unlink();
         this.project = project;
     }

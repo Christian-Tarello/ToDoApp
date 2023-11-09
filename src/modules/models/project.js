@@ -9,7 +9,7 @@ export default class Project extends CollectionWrapper {
 
     add(item) {
         super.add(item);
-        item.linkProject(this);
+        item.link(this);
     }
 
     getDueToday() {
