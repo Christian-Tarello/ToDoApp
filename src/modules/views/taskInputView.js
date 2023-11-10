@@ -8,11 +8,16 @@ export default class TaskInputView {
         this.element = undefined;
     }
 
-    build() {
-        this.element = document.createElement("form");
-        this.element.setAttribute('action', '');
-        this.element.setAttribute('method', 'POST');
-        this.element.innerHTML = `
+    createMainNode() {
+        const element = document.createElement('form');
+        element.setAttribute('action', '');
+        element.setAttribute('method', 'POST');
+        return element;
+    }
+
+    createTemplate() {
+        const element = this.createMainNode();
+        element.innerHTML = `
             <ul>
                 <li>
                     <label for="taskTitle">Title</label>
@@ -40,19 +45,23 @@ export default class TaskInputView {
             <button type="submit">Create Task</button>
             <button type="button">Cancel</button>             
         `;
-
-        this.setInteractions();
-        return this.element;
+        return element;
     }
 
     setInteractions() {
         const cancelButton = this.element.querySelector('button[type="button"]');
-
+        
         this.element.addEventListener("submit", (e) => {
             e.preventDefault();
             this.controller.processTaskSubmission(e);
         });
         cancelButton.addEventListener("click", () => {this.controller.remove()});
+    }
+    
+    build() {
+        this.element = this.createTemplate();
+        this.setInteractions();
+        return this.element;
     }
 
     remove() {
