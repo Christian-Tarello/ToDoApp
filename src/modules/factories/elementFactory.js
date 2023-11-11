@@ -44,8 +44,8 @@ export default class ElementFactory {
         return element;
     }
     
-    buildTaskInput() {
-        const view = new TaskInputView(new TaskInputController());
+    buildTaskInput(project) {
+        const view = new TaskInputView(new TaskInputController(project));
         const element = view.build();
         PubSub.publish(Topics.TASK_CREATION_INPUT_ELEMENT, element);
         return element;

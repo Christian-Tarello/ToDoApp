@@ -5,16 +5,12 @@ export default class ProjectController {
     constructor(project, elementFactory) {
         this.elementFactory = elementFactory;
         this.project = project;
-        this.setInteractions();
+        this.project.addObserver(this);
         this.view = undefined;
     }
 
     setView(view) {
         this.view = view;
-    }
-
-    setInteractions() {
-        PubSub.subscribe(Topics.TASK, (msg, task) => {this.addTask(task)});
     }
 
     load() {
@@ -24,21 +20,15 @@ export default class ProjectController {
             }
         )
         this.view.replaceItems(elements);
+        console.log(this.project);
     }
 
     update() {
         this.load();
     }
 
-    addTask(task) {        
-        this.project.add(task);
-        const element = this.elementFactory.buildTask(task);
-        this.view.addItem(element);
-        console.log(this.project);
-    }
-
     addTaskInput() {
-        const element = this.elementFactory.buildTaskInput();
+        const element = this.elementFactory.buildTaskInput(this.project);
         PubSub.publish(Topics.ADD_POP_UP, element);
     }
 }
