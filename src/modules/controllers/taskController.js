@@ -2,8 +2,9 @@ import PubSub from "pubsub-js";
 import Topics from "../utils/topics";
 
 export default class TaskController {
-    constructor(task) {
+    constructor(task, elementFactory) {
         this.task = task;
+        this.elementFactory = elementFactory;
         this.view = undefined;
     }
 
@@ -37,6 +38,7 @@ export default class TaskController {
     }
 
     addEditTaskInput() {
-        // ...
+        const element = this.elementFactory.buildTaskEditInput(this.task);
+        PubSub.publish(Topics.ADD_POP_UP, element);
     }
 }

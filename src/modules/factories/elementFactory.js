@@ -14,6 +14,8 @@ import ChecklistItemView from "../views/checklistItemView";
 import ChecklistItemController from "../controllers/checklistItemController";
 import PopUpLayerView from "../views/popUpLayerView";
 import PopUpLayerController from "../controllers/popUpLayerController";
+import TaskEditInputView from "../views/taskEditInputView";
+import TaskEditInputController from "../controllers/taskEditInputController";
 
 export default class ElementFactory {
     buildChecklist(checklist) {
@@ -31,7 +33,7 @@ export default class ElementFactory {
 
     buildTask(task) {
         const checklistElement = this.buildChecklist(task.checklist)
-        const view = new TaskView(new TaskController(task), checklistElement);
+        const view = new TaskView(new TaskController(task, this), checklistElement);
         const element = view.build();
         PubSub.publish(Topics.TASK_ELEMENT, element)
         return element;
@@ -55,6 +57,13 @@ export default class ElementFactory {
         const view = new TaskInputView(new TaskInputController());
         const element = view.build();
         PubSub.publish(Topics.TASK_CREATION_INPUT_ELEMENT, element);
+        return element;
+    }
+
+    buildTaskEditInput(task) {
+        const view = new TaskEditInputView(new TaskEditInputController(task));
+        const element = view.build();
+        PubSub.publish(Topics.TASK_EDITION_INPUT_ELEMENT, element);
         return element;
     }
 
