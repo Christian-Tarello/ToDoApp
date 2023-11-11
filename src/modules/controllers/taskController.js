@@ -29,7 +29,7 @@ export default class TaskController {
     }
 
     update() {
-        this.view.updateState(this.task);
+        this.view.setContent(this.task);
     }
 
     addEditTaskInput() {

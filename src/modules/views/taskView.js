@@ -30,11 +30,15 @@ export default class TaskView {
             <li>Priority: ${data.priority}</li>
             <li>Due Date: ${data.dueDate}</li>
         `;
+        this.setCheckboxState(data.isDone);
     }
 
-    updateState(data) {
-        this.setContent(data);
-        if (data.isDone) {
+    updateState() {
+        this.controller.update()
+    }
+
+    setCheckboxState(isOn) {
+        if (isOn) {
             this.doneToggle.setAttribute('checked', '');
         } else {
             this.doneToggle.removeAttribute('checked', '');
