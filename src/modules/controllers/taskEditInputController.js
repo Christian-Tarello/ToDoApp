@@ -1,3 +1,5 @@
+import Topics from "../utils/topics";
+import PubSub from "pubsub-js";
 import TaskFields from "../utils/taskFields";
 
 export default class TaskEditInputController {
@@ -26,6 +28,7 @@ export default class TaskEditInputController {
         this.task.priority = priority;
         this.task.dueDate = dueDate;
 
+        PubSub.publish(Topics.UPDATE_TASK_ELEMENT, this.task.id);
         this.remove();
     }
 }

@@ -29,11 +29,17 @@ const ElementRemovalTopics = Object.freeze({
     REMOVE_TASK_ELEMENT: "ELEMENT.REMOVE.TASK",
 });
 
+const UpdateTopics = Object.freeze({
+    UPDATE_ELEMENT_TOPIC: "ELEMENT.REQUEST.UPDATE",
+    UPDATE_TASK_ELEMENT: "ELEMENT.REQUEST.UPDATE.TASK"
+});
+
 const Topics = Object.freeze({
     ...PopUpTopics,
     ...ModelTopics,
     ...ElementTopics,
-    ...ElementRemovalTopics
+    ...ElementRemovalTopics,
+    ...UpdateTopics
 });
 
 export default Topics;
