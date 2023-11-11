@@ -15,6 +15,7 @@ export default class Task {
 
         this.checklist = new Checklist(this.id);
         this.project = undefined;
+        this.observers = [];
     }
 
     unlink() {
@@ -44,5 +45,22 @@ export default class Task {
         } else {
             this.setDone();
         }
+    }
+
+    addObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    removeObserver(observer) {
+        const index = this.observers.indexOf(observer);
+        this.observers.splice(index, 1);
+    }
+
+    setState(object) {
+        Object.entries(object).forEach(
+            ([key, value] = entry) => {
+                this[key] = value;
+            }
+        )
     }
 }
