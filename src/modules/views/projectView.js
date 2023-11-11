@@ -25,6 +25,10 @@ export default class ProjectView {
         return this.tasksHook;
     }
 
+    replaceItems(elements) {
+        this.tasksHook.replaceChildren(...elements);
+    }
+
     addItem(element) {
         this.tasksHook.append(element);
     }
