@@ -6,6 +6,8 @@ export default class TaskController {
         this.task = task;
         this.task.addObserver(this);
         this.elementFactory = elementFactory;
+        this.subTokens = [];
+        this.setInteractions();
         this.view = undefined;
     }
 
@@ -13,15 +15,26 @@ export default class TaskController {
         this.view = view;
     }
 
+    setInteractions() {
+        this.subTokens.push(
+            PubSub.subscribe(Topics.FINALIZE_ALL_TASKS, () => {this.finalize()}),
+        );
+    }
+
     delete() {
+        this.finalize();
         this.remove();
         this.task.unlink();
         PubSub.publish(Topics.REMOVE_TASK, this.task.id);
     }
 
     remove() {
-        this.task.removeObserver(this);
         this.view.remove();
+    }
+
+    finalize() {
+        this.subTokens.forEach((token) => {PubSub.unsubscribe(token)});
+        this.task.removeObserver(this);
     }
 
     toggle() {

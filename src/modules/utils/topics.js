@@ -34,12 +34,18 @@ const UpdateTopics = Object.freeze({
     UPDATE_TASK_ELEMENT: "ELEMENT.REQUEST.UPDATE.TASK"
 });
 
+const FinalizeElementTopics = Object.freeze({
+    FINALIZE_ELEMENT_TOPIC: "ELEMENT.FINALIZE",
+    FINALIZE_ALL_TASKS: "ELEMENT.FINALIZE.ALL_TASKS"
+})
+
 const Topics = Object.freeze({
     ...PopUpTopics,
     ...ModelTopics,
     ...ElementTopics,
     ...ElementRemovalTopics,
-    ...UpdateTopics
+    ...UpdateTopics,
+    ...FinalizeElementTopics
 });
 
 export default Topics;
