@@ -7,7 +7,7 @@ export default class ProjectView {
 
     build() {
         this.element = document.createElement('div');
-        this.element.append(document.createElement('div'));
+        this.element.append(this.createTasksHook());
         this.element.append(this.createAddTaskInputButton());
         this.setInteractions();
         return this.element;
@@ -20,8 +20,13 @@ export default class ProjectView {
         return this.addTaskInputButton;
     }
 
+    createTasksHook() {
+        this.tasksHook = document.createElement('div');
+        return this.tasksHook;
+    }
+
     addItem(element) {
-        this.element.firstChild.append(element);
+        this.tasksHook.append(element);
     }
 
     setInteractions() {
