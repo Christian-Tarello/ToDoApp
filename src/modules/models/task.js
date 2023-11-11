@@ -56,11 +56,16 @@ export default class Task {
         this.observers.splice(index, 1);
     }
 
+    updateObservers() {
+        this.observers.forEach((observer) => observer.update());
+    }
+
     setState(object) {
         Object.entries(object).forEach(
             ([key, value] = entry) => {
                 this[key] = value;
             }
-        )
+        );
+        this.updateObservers();
     }
 }
