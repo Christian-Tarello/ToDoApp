@@ -46,8 +46,7 @@ export default class ElementFactory {
     }
 
     buildProject(project) {
-        const addTaskElement = this.buildAddTaskButton();
-        const projectView = new ProjectView(new ProjectController(project, this), addTaskElement);
+        const projectView = new ProjectView(new ProjectController(project, this));
         const element = projectView.build();
         PubSub.publish(Topics.PROJECT_ELEMENT, element);
         return element;

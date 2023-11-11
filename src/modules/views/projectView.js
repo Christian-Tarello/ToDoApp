@@ -1,6 +1,5 @@
 export default class ProjectView {
-    constructor(controller, addTaskButton) {
-        this.addTaskButton = addTaskButton;
+    constructor(controller) {
         this.controller = controller;
         this.controller.setView(this);
         this.element = undefined;
@@ -9,11 +8,23 @@ export default class ProjectView {
     build() {
         this.element = document.createElement('div');
         this.element.append(document.createElement('div'));
-        this.element.append(this.addTaskButton);
+        this.element.append(this.createAddTaskInputButton());
+        this.setInteractions();
         return this.element;
+    }
+
+    createAddTaskInputButton() {
+        this.addTaskInputButton = document.createElement("button");
+        this.addTaskInputButton.setAttribute("type", "button");
+        this.addTaskInputButton.innerText = 'Add Task +';
+        return this.addTaskInputButton;
     }
 
     addItem(element) {
         this.element.firstChild.append(element);
+    }
+
+    setInteractions() {
+        this.addTaskInputButton.addEventListener('click', () => {this.controller.addTaskInput()});
     }
 }

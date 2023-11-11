@@ -23,4 +23,9 @@ export default class ProjectController {
         this.view.addItem(element);
         console.log(this.project);
     }
+
+    addTaskInput() {
+        const element = this.elementFactory.buildTaskInput();
+        PubSub.publish(Topics.ADD_POP_UP, element);
+    }
 }
