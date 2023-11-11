@@ -21,7 +21,7 @@ export default class ChecklistController {
     }
 
     update() {
-        this.view.updateState();
+        this.load();
     }
 
     addEmptyItem() {

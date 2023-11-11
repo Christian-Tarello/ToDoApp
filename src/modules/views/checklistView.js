@@ -43,7 +43,7 @@ export default class ChecklistView {
     }
 
     updateState() {
-        this.controller.load();
+        this.controller.update();
     }
 
     replaceItems(elements) {
