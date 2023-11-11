@@ -17,6 +17,19 @@ export default class ProjectController {
         PubSub.subscribe(Topics.TASK, (msg, task) => {this.addTask(task)});
     }
 
+    load() {
+        const elements = this.project.items.map(
+            (item) => {
+                return this.elementFactory.buildTask(item);
+            }
+        )
+        this.view.replaceItems(elements);
+    }
+
+    update() {
+        this.load();
+    }
+
     addTask(task) {        
         this.project.add(task);
         const element = this.elementFactory.buildTask(task);

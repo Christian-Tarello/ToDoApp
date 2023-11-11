@@ -9,6 +9,7 @@ export default class ProjectView {
         this.element = document.createElement('div');
         this.element.append(this.createTasksHook());
         this.element.append(this.createAddTaskInputButton());
+        this.updateState();
         this.setInteractions();
         return this.element;
     }
@@ -27,6 +28,10 @@ export default class ProjectView {
 
     replaceItems(elements) {
         this.tasksHook.replaceChildren(...elements);
+    }
+
+    updateState() {
+        this.controller.update();
     }
 
     addItem(element) {
