@@ -1,5 +1,3 @@
-import Topics from "../utils/topics";
-import PubSub from "pubsub-js";
 import TaskFields from "../utils/taskFields";
 
 export default class TaskEditInputController {
@@ -23,12 +21,14 @@ export default class TaskEditInputController {
         const priority = data.get(TaskFields.PRIORITY);
         const dueDate = data.get(TaskFields.DUE_DATE);
 
-        this.task.title = title;
-        this.task.description = description;
-        this.task.priority = priority;
-        this.task.dueDate = dueDate;
+        const state = {
+            title,
+            description,
+            priority,
+            dueDate,
+        }
 
-        PubSub.publish(Topics.UPDATE_TASK_ELEMENT, this.task.id);
+        this.task.setState(state);
         this.remove();
     }
 }

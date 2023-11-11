@@ -4,20 +4,13 @@ import Topics from "../utils/topics";
 export default class TaskController {
     constructor(task, elementFactory) {
         this.task = task;
+        this.task.addObserver(this);
         this.elementFactory = elementFactory;
-        this.subscriptionTokens = [];
-        this.setInteractions();
         this.view = undefined;
     }
 
     setView(view) {
         this.view = view;
-    }
-
-    setInteractions() {
-        this.subscriptionTokens.push(
-            PubSub.subscribe(Topics.UPDATE_TASK_ELEMENT, (msg, id) => {this.handleUpdateRequest(id)})
-        )
     }
 
     delete() {
@@ -27,17 +20,12 @@ export default class TaskController {
     }
 
     remove() {
-        this.subscriptionTokens.forEach((token) => PubSub.unsubscribe(token));
+        this.task.removeObserver(this);
         this.view.remove();
     }
 
     toggle() {
         this.task.toggleDone();
-    }
-
-    handleUpdateRequest(id) {
-        if (id !== this.task.id) {return;}
-        this.update();
     }
 
     update() {
