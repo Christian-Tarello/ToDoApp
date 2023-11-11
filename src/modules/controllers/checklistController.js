@@ -11,6 +11,19 @@ export default class ChecklistController {
         this.view = view;
     }
 
+    load() {
+        const elements = this.checklist.items.map(
+            (item) => {
+                return this.elementFactory.buildChecklistItem(item);
+            }
+        )
+        this.view.replaceItems(elements);
+    }
+
+    update() {
+        this.view.updateState();
+    }
+
     addEmptyItem() {
         const item = ModelFactory.createChecklistItem('');
         this.checklist.add(item);

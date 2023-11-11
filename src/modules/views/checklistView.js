@@ -7,6 +7,7 @@ export default class ChecklistView {
 
     build() {
         this.element = this.createTemplate();
+        this.updateState();
         this.setInteractions();
         return this.element;
     }
@@ -39,6 +40,14 @@ export default class ChecklistView {
 
     addItem(element) {
         this.itemsHook.append(element);
+    }
+
+    updateState() {
+        this.controller.load();
+    }
+
+    replaceItems(elements) {
+        this.itemsHook.replaceChildren(...elements);
     }
 
     setInteractions() {
