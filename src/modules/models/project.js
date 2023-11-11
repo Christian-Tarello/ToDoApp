@@ -5,11 +5,13 @@ export default class Project extends CollectionWrapper {
     constructor(name, items) {
         super(items);
         this.name = name;
+        this.observers = [];
     }
 
     add(item) {
         super.add(item);
         item.link(this);
+        this.updateObservers();
     }
 
     getDueToday() {
@@ -35,5 +37,19 @@ export default class Project extends CollectionWrapper {
         const item = this.getById(id);
         const position = this.items.indexOf(item);
         this.remove(position);
+        this.updateObservers();
+    }
+
+    addObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    removeObserver(observer) {
+        const index = this.observers.indexOf(observer);
+        this.observers.splice(index, 1);
+    }
+
+    updateObservers() {
+        this.observers.forEach((observer) => observer.update());
     }
 }
