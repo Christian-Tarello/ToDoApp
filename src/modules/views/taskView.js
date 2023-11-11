@@ -13,7 +13,7 @@ export default class TaskView {
         this.element.append(this.createContentHook());
         this.element.append(this.createButtonRow());
         this.element.append(this.checklistElement);
-        this.updateState();
+        this.controller.update();
         this.setInteractions();
         return this.element;
     }
@@ -32,8 +32,7 @@ export default class TaskView {
         `;
     }
 
-    updateState() {
-        const data = this.controller.getData();
+    updateState(data) {
         this.setContent(data);
         if (data.isDone) {
             this.doneToggle.setAttribute('checked', '');

@@ -12,17 +12,6 @@ export default class TaskController {
         this.view = view;
     }
 
-    getData() {
-        const data = {
-            title: this.task.title,
-            description: this.task.description,
-            priority: this.task.priority,
-            dueDate: this.task.dueDate,
-            isDone: this.task.isDone
-        }
-        return data;
-    }
-
     delete() {
         this.remove();
         this.task.unlink();
@@ -35,6 +24,10 @@ export default class TaskController {
 
     toggle() {
         this.task.toggleDone();
+    }
+
+    update() {
+        this.view.updateState(this.task);
     }
 
     addEditTaskInput() {
