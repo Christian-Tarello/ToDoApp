@@ -4,8 +4,6 @@ import TaskController from "../controllers/taskController";
 import TaskView from "../views/taskView";
 import ProjectController from "../controllers/projectController";
 import ProjectView from "../views/projectView";
-import AddTaskController from "../controllers/addTaskController";
-import AddTaskView from "../views/addTaskView";
 import TaskInputController from "../controllers/taskInputController";
 import TaskInputView from "../views/taskInputView";
 import ChecklistView from "../views/checklistView";
@@ -36,12 +34,6 @@ export default class ElementFactory {
         const view = new TaskView(new TaskController(task, this), checklistElement);
         const element = view.build();
         PubSub.publish(Topics.TASK_ELEMENT, element)
-        return element;
-    }
-
-    buildAddTaskButton() {
-        const view = new AddTaskView(new AddTaskController(this));
-        const element = view.build();
         return element;
     }
 
