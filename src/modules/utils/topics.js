@@ -7,33 +7,6 @@ const PopUpTopics = Object.freeze({
     REMOVE_CLICK_LOCK: "POP_UP.REMOVE_CLICK_LOCK",
 });
 
-const ModelTopics = Object.freeze({
-    MODEL_TOPIC: "MODEL",
-    TASK: "MODEL.TASK",
-    PROJECT: "MODEL.PROJECT",
-    CHECKLIST_ITEM: "MODEL.CHECKLIST_ITEM",
-});
-
-const ElementTopics = Object.freeze({
-    ELEMENT_TOPIC: "ELEMENT",
-    TASK_ELEMENT: "ELEMENT.TASK",
-    PROJECT_ELEMENT: "ELEMENT.TASK",
-    TASK_CREATION_INPUT_ELEMENT: "ELEMENT.TASK_CREATION_INPUT",
-    TASK_EDITION_INPUT_ELEMENT: "ELEMENT.TASK_EDITION_INPUT",
-    CHECKLIST_ITEM_ELEMENT: "ELEMENT.CHECKLIST_ITEM_ELEMENT",
-});
-
-const ElementRemovalTopics = Object.freeze({
-    ELEMENT_REMOVAL_TOPIC: "ELEMENT.REMOVE",
-    REMOVE_TASK_CREATION_INPUT_ELEMENT: "ELEMENT.REMOVE.TASK_CREATION_INPUT",
-    REMOVE_TASK_ELEMENT: "ELEMENT.REMOVE.TASK",
-});
-
-const UpdateTopics = Object.freeze({
-    UPDATE_ELEMENT_TOPIC: "ELEMENT.REQUEST.UPDATE",
-    UPDATE_TASK_ELEMENT: "ELEMENT.REQUEST.UPDATE.TASK"
-});
-
 const FinalizeElementTopics = Object.freeze({
     FINALIZE_ELEMENT_TOPIC: "ELEMENT.FINALIZE",
     FINALIZE_ALL_TASKS: "ELEMENT.FINALIZE.ALL_TASKS"
@@ -41,10 +14,6 @@ const FinalizeElementTopics = Object.freeze({
 
 const Topics = Object.freeze({
     ...PopUpTopics,
-    ...ModelTopics,
-    ...ElementTopics,
-    ...ElementRemovalTopics,
-    ...UpdateTopics,
     ...FinalizeElementTopics
 });
 

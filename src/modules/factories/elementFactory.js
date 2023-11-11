@@ -1,5 +1,3 @@
-import PubSub from "pubsub-js";
-import Topics from "../utils/topics";
 import TaskController from "../controllers/taskController";
 import TaskView from "../views/taskView";
 import ProjectController from "../controllers/projectController";
@@ -33,35 +31,30 @@ export default class ElementFactory {
         const checklistElement = this.buildChecklist(task.checklist)
         const view = new TaskView(new TaskController(task, this), checklistElement);
         const element = view.build();
-        PubSub.publish(Topics.TASK_ELEMENT, element)
         return element;
     }
 
     buildProject(project) {
         const projectView = new ProjectView(new ProjectController(project, this));
         const element = projectView.build();
-        PubSub.publish(Topics.PROJECT_ELEMENT, element);
         return element;
     }
     
     buildTaskInput(project) {
         const view = new TaskInputView(new TaskInputController(project));
         const element = view.build();
-        PubSub.publish(Topics.TASK_CREATION_INPUT_ELEMENT, element);
         return element;
     }
 
     buildTaskEditInput(task) {
         const view = new TaskEditInputView(new TaskEditInputController(task));
         const element = view.build();
-        PubSub.publish(Topics.TASK_EDITION_INPUT_ELEMENT, element);
         return element;
     }
 
     buildChecklistItem(item) {
         const view = new ChecklistItemView(new ChecklistItemController(item));
         const element = view.build();
-        PubSub.publish(Topics.CHECKLIST_ITEM_ELEMENT, element);
         return element;
     }
 
