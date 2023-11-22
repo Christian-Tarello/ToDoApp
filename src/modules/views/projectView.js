@@ -5,15 +5,6 @@ export default class ProjectView {
         this.element = undefined;
     }
 
-    build() {
-        this.element = document.createElement('div');
-        this.element.append(this.createTasksHook());
-        this.element.append(this.createAddTaskInputButton());
-        this.updateState();
-        this.setInteractions();
-        return this.element;
-    }
-
     createAddTaskInputButton() {
         this.addTaskInputButton = document.createElement("button");
         this.addTaskInputButton.setAttribute("type", "button");
@@ -26,6 +17,19 @@ export default class ProjectView {
         return this.tasksHook;
     }
 
+    setInteractions() {
+        this.addTaskInputButton.addEventListener('click', () => {this.controller.addTaskInput()});
+    }
+
+    build() {
+        this.element = document.createElement('div');
+        this.element.append(this.createTasksHook());
+        this.element.append(this.createAddTaskInputButton());
+        this.updateState();
+        this.setInteractions();
+        return this.element;
+    }
+
     replaceItems(elements) {
         this.tasksHook.replaceChildren(...elements);
     }
@@ -36,9 +40,5 @@ export default class ProjectView {
 
     addItem(element) {
         this.tasksHook.append(element);
-    }
-
-    setInteractions() {
-        this.addTaskInputButton.addEventListener('click', () => {this.controller.addTaskInput()});
     }
 }
