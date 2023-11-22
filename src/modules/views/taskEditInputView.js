@@ -10,21 +10,21 @@ export default class TaskEditInputView {
         this.element = undefined;
     }
 
-    createMainNode() {
-        const element = document.createElement('form');
-        element.setAttribute('action', '');
-        element.setAttribute('method', 'POST');
-        return element;
+    createFormElement() {
+        this.formElement = document.createElement('form');
+        this.formElement.setAttribute('action', '');
+        this.formElement.setAttribute('method', 'POST');
+        return this.formElement;
     }
 
-    createTemplate() {
-        const element = this.createMainNode();
+    create() {
+        const element = this.createFormElement();
         element.append(
             this.createContentHook(),
             this.createSubmitButton(),
             this.createCancelButton()
         );
-        this.controller.update();
+        this.controller.updateView();
         return element;
     }
 
@@ -88,7 +88,7 @@ export default class TaskEditInputView {
     }
 
     setInteractions() {       
-        this.element.addEventListener("submit", (e) => {
+        this.formElement.addEventListener("submit", (e) => {
             e.preventDefault();
             this.controller.processTaskEditSubmission(e);
         });
@@ -96,7 +96,7 @@ export default class TaskEditInputView {
     }
     
     build() {
-        this.element = this.createTemplate();
+        this.element = this.create();
         this.setInteractions();
         return this.element;
     }

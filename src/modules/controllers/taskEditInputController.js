@@ -32,7 +32,7 @@ export default class TaskEditInputController {
         this.remove();
     }
 
-    update() {
+    updateView() {
         this.view.setContent(this.task);
     }
 }
