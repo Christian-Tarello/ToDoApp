@@ -22,6 +22,7 @@ export default class TaskEditInputView {
             this.createSubmitButton(),
             this.createCancelButton()
         );
+        this.controller.update();
         return element;
     }
 

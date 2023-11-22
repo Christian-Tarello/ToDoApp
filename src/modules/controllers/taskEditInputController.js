@@ -31,4 +31,8 @@ export default class TaskEditInputController {
         this.task.setState(state);
         this.remove();
     }
+
+    update() {
+        this.view.setContent(this.task);
+    }
 }
