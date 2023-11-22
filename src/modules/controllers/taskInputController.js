@@ -22,7 +22,7 @@ export default class TaskInputController {
         const priority = data.get(TaskFields.PRIORITY);
         const dueDate = data.get(TaskFields.DUE_DATE);
 
-        const task = ModelFactory.createTask(title, description, priority, dueDate);
+        const task = ModelFactory.createTask(title, description, dueDate, priority);
         this.project.add(task);
 
         this.remove();

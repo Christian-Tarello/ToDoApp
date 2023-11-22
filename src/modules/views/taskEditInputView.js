@@ -1,10 +1,12 @@
 import TaskFields from "../utils/taskFields";
 import Priority from "../utils/priority";
+import TaskFormTemplate from "../templates/taskFormTemplate";
 
 export default class TaskEditInputView {
     constructor(controller) {
         this.controller = controller;
         this.controller.setView(this);
+        this.template = new TaskFormTemplate();
         this.element = undefined;
     }
 
@@ -26,32 +28,44 @@ export default class TaskEditInputView {
         return element;
     }
 
+    createContentObj(data) {
+        return [
+            {
+                type: 'textField',
+                name: TaskFields.TITLE,
+                label: 'Title',
+                value: data.title
+            },
+            {
+                type: 'textField',
+                name: TaskFields.DESCRIPTION,
+                label: 'Description',
+                value: data.description
+            },
+            {
+                type: 'selectField',
+                name: TaskFields.PRIORITY,
+                label: 'Priority',
+                options: [
+                    {label: 'Low', value: Priority.LOW, isSelected: data.priority === Priority.LOW},
+                    {label: 'Medium', value: Priority.MEDIUM,  isSelected: data.priority === Priority.MEDIUM},
+                    {label: 'High', value: Priority.HIGH, isSelected: data.priority === Priority.HIGH},
+                    {label: 'Unset', value: Priority.UNSET, isSelected: data.priority === Priority.UNSET}
+                ]
+            },
+            {
+                type: 'dateField',
+                name: TaskFields.DUE_DATE,
+                label: 'Due Date',
+                value: data.dueDate
+            }
+        ]
+    }
+
     setContent(data) {
-        this.contentHook.innerHTML = `
-        <ul>
-            <li>
-                <label for="taskTitle">Title</label>
-                <input type="text" id="taskTitle" name="${TaskFields.TITLE}" required>
-            </li>
-            <li>
-                <label for="taskDescription">Description</label>
-                <input type="text" id="taskDescription" name="${TaskFields.DESCRIPTION}" required>
-            </li>
-            <li>
-                <label for="taskPriority">Priority</label>
-                <select id="taskPriority" name="${TaskFields.PRIORITY}">
-                    <option value="${Priority.LOW}">Low</option>
-                    <option value="${Priority.MEDIUM}">Medium</option>
-                    <option value="${Priority.HIGH}">High</option>
-                    <option value="${Priority.UNSET}" selected>Unset</option>
-                </select>
-            </li>
-            <li>
-                <label for="taskDueDate">Due</label>
-                <input type="date" id="taskDueDate" name="${TaskFields.DUE_DATE}">
-            </li>
-        </ul>
-        `;
+        const contentObj = this.createContentObj(data);
+        const items = contentObj.map((data) => this.template.createInput(data));
+        this.contentHook.replaceChildren(...items);
     }
 
     createContentHook() {
