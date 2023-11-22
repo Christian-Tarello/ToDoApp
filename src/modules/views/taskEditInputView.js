@@ -17,6 +17,25 @@ export default class TaskEditInputView {
         return this.formElement;
     }
 
+    createContentHook() {
+        this.contentHook = document.createElement('ul');
+        return this.contentHook;
+    }
+
+    createSubmitButton() {
+        this.submitButton = document.createElement('button');
+        this.submitButton.setAttribute('type', 'submit');
+        this.submitButton.innerText = 'Edit Task';
+        return this.submitButton;
+    }
+
+    createCancelButton() {
+        this.cancelButton = document.createElement('button');
+        this.cancelButton.setAttribute('type', 'button');
+        this.cancelButton.innerText = 'Cancel';
+        return this.cancelButton;
+    }
+
     create() {
         const element = this.createFormElement();
         element.append(
@@ -66,25 +85,6 @@ export default class TaskEditInputView {
         const contentObj = this.createContentObj(data);
         const items = contentObj.map((data) => this.template.createInput(data));
         this.contentHook.replaceChildren(...items);
-    }
-
-    createContentHook() {
-        this.contentHook = document.createElement('ul');
-        return this.contentHook;
-    }
-
-    createSubmitButton() {
-        this.submitButton = document.createElement('button');
-        this.submitButton.setAttribute('type', 'submit');
-        this.submitButton.innerText = 'Edit Task';
-        return this.submitButton;
-    }
-
-    createCancelButton() {
-        this.cancelButton = document.createElement('button');
-        this.cancelButton.setAttribute('type', 'button');
-        this.cancelButton.innerText = 'Cancel';
-        return this.cancelButton;
     }
 
     setInteractions() {       
