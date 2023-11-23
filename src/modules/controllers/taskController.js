@@ -15,21 +15,21 @@ export default class TaskController {
         this.view = view;
     }
 
-    setInteractions() {
-        this.subTokens.push(
-            PubSub.subscribe(Topics.FINALIZE_ALL_TASKS, () => {this.finalize()}),
-        );
+    toggle() {
+        this.task.toggleDone();
     }
 
-    delete() {
-        this.finalize();
-        this.remove();
-        this.task.unlink();
-        PubSub.publish(Topics.REMOVE_TASK, this.task.id);
+    addEditTaskInput() {
+        const element = this.elementFactory.buildTaskEditInput(this.task);
+        PubSub.publish(Topics.ADD_POP_UP, element);
     }
 
-    remove() {
-        this.view.remove();
+    updateView() {
+        this.view.setContent(this.task);
+    }
+
+    update() {
+        this.updateView();
     }
 
     finalize() {
@@ -37,16 +37,19 @@ export default class TaskController {
         this.task.removeObserver(this);
     }
 
-    toggle() {
-        this.task.toggleDone();
+    remove() {
+        this.view.remove();
     }
 
-    update() {
-        this.view.setContent(this.task);
+    delete() {
+        this.finalize();
+        this.remove();
+        this.task.unlink();
     }
 
-    addEditTaskInput() {
-        const element = this.elementFactory.buildTaskEditInput(this.task);
-        PubSub.publish(Topics.ADD_POP_UP, element);
+    setInteractions() {
+        this.subTokens.push(
+            PubSub.subscribe(Topics.FINALIZE_ALL_TASKS, () => {this.finalize()}),
+        );
     }
 }

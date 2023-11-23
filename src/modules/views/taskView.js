@@ -7,42 +7,14 @@ export default class TaskView {
         this.interactiveElements = {};
     }
 
-    build() {
-        this.element = document.createElement('div');
-        this.element.append(this.createDoneToggle());
-        this.element.append(this.createContentHook());
-        this.element.append(this.createButtonRow());
-        this.element.append(this.checklistElement);
-        this.controller.update();
-        this.setInteractions();
-        return this.element;
+    createContainer() {
+        const element = document.createElement('div');
+        return element;
     }
 
     createContentHook() {
         this.contentHook = document.createElement('ul');
         return this.contentHook;
-    }
-
-    setContent(data) {
-        this.contentHook.innerHTML = `
-            <li>Title: ${data.title}</li>
-            <li>Description: ${data.description}</li>
-            <li>Priority: ${data.priority}</li>
-            <li>Due Date: ${data.dueDate}</li>
-        `;
-        this.setCheckboxState(data.isDone);
-    }
-
-    updateState() {
-        this.controller.update()
-    }
-
-    setCheckboxState(isOn) {
-        if (isOn) {
-            this.doneToggle.setAttribute('checked', '');
-        } else {
-            this.doneToggle.removeAttribute('checked', '');
-        }
     }
 
     createButtonRow() {
@@ -72,8 +44,13 @@ export default class TaskView {
         return this.doneToggle;
     }
     
-    remove() {
-        this.element.remove();
+    create() {
+        const element = this.createContainer();
+        element.append(this.createDoneToggle());
+        element.append(this.createContentHook());
+        element.append(this.createButtonRow());
+        element.append(this.checklistElement);
+        return element;
     }
 
     setInteractions() {
@@ -82,4 +59,32 @@ export default class TaskView {
         this.doneToggle.addEventListener('change', () => {this.controller.toggle()});
     }
 
+    build() {
+        this.element = this.create();
+        this.controller.updateView();
+        this.setInteractions();
+        return this.element;
+    }
+
+    remove() {
+        this.element.remove();
+    }
+
+    setContent(data) {
+        this.contentHook.innerHTML = `
+            <li>Title: ${data.title}</li>
+            <li>Description: ${data.description}</li>
+            <li>Priority: ${data.priority}</li>
+            <li>Due Date: ${data.dueDate}</li>
+        `;
+        this.setCheckboxState(data.isDone);
+    }
+
+    setCheckboxState(isOn) {
+        if (isOn) {
+            this.doneToggle.setAttribute('checked', '');
+        } else {
+            this.doneToggle.removeAttribute('checked', '');
+        }
+    }
 }
