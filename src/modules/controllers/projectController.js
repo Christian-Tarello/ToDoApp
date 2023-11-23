@@ -13,7 +13,7 @@ export default class ProjectController {
         this.view = view;
     }
 
-    load() {
+    updateView() {
         PubSub.publishSync(Topics.FINALIZE_ALL_TASKS);
         const elements = this.project.items.map(
             (item) => {
@@ -21,11 +21,10 @@ export default class ProjectController {
             }
         )
         this.view.replaceItems(elements);
-        console.log(this.project);
     }
 
     update() {
-        this.load();
+        this.updateView();
     }
 
     addTaskInput() {
