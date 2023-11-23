@@ -5,23 +5,7 @@ export default class ChecklistView {
         this.element = undefined;
     }
 
-    build() {
-        this.element = this.createTemplate();
-        this.updateState();
-        this.setInteractions();
-        return this.element;
-    }
-    
-    createTemplate() {
-        const element = this.createMainNode();
-        element.append(
-            this.createItemsHook(),
-            this.createAddItemButton()
-        );
-        return element;
-    }
-
-    createMainNode() {
+    createContainer() {
         const element = document.createElement('div');
         return element;
     }
@@ -38,19 +22,31 @@ export default class ChecklistView {
         return this.addItemButton;
     }
 
-    addItem(element) {
-        this.itemsHook.append(element);
-    }
-
-    updateState() {
-        this.controller.update();
-    }
-
-    replaceItems(elements) {
-        this.itemsHook.replaceChildren(...elements);
+    create() {
+        const element = this.createContainer();
+        element.append(
+            this.createItemsHook(),
+            this.createAddItemButton()
+        );
+        return element;
     }
 
     setInteractions() {
         this.addItemButton.addEventListener('click', () => {this.controller.addEmptyItem()});
+    }
+
+    build() {
+        this.element = this.create();
+        this.controller.updateView();
+        this.setInteractions();
+        return this.element;
+    }
+
+    addItem(element) {
+        this.itemsHook.append(element);
+    }
+
+    replaceItems(elements) {
+        this.itemsHook.replaceChildren(...elements);
     }
 }

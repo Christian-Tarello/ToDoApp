@@ -10,8 +10,15 @@ export default class ChecklistController {
     setView(view) {
         this.view = view;
     }
+    
+    addEmptyItem() {
+        const item = ModelFactory.createChecklistItem('');
+        this.checklist.add(item);
+        const element = this.elementFactory.buildChecklistItem(item);
+        this.view.addItem(element);
+    }
 
-    load() {
+    updateView() {
         const elements = this.checklist.items.map(
             (item) => {
                 return this.elementFactory.buildChecklistItem(item);
@@ -21,13 +28,6 @@ export default class ChecklistController {
     }
 
     update() {
-        this.load();
-    }
-
-    addEmptyItem() {
-        const item = ModelFactory.createChecklistItem('');
-        this.checklist.add(item);
-        const element = this.elementFactory.buildChecklistItem(item);
-        this.view.addItem(element);
+        this.updateView();
     }
 }
