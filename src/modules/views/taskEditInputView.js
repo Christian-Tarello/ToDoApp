@@ -17,6 +17,10 @@ export default class TaskEditInputView {
         return this.formElement;
     }
 
+    createContainer() {
+        return this.createFormElement();
+    }
+
     createContentHook() {
         this.contentHook = document.createElement('ul');
         return this.contentHook;
@@ -37,7 +41,7 @@ export default class TaskEditInputView {
     }
 
     create() {
-        const element = this.createFormElement();
+        const element = this.createContainer();
         element.append(
             this.createContentHook(),
             this.createSubmitButton(),
