@@ -10,6 +10,14 @@ export default class TaskEditInputController {
         this.view = view;
     }
 
+    updateView() {
+        this.view.setContent(this.task);
+    }
+
+    remove() {
+        this.view.remove();
+    }
+
     processTaskEditSubmission(e) {
         const data = new FormData(e.target);
         const title = data.get(TaskFields.TITLE);
@@ -26,13 +34,5 @@ export default class TaskEditInputController {
 
         this.task.setState(state);
         this.remove();
-    }
-
-    updateView() {
-        this.view.setContent(this.task);
-    }
-
-    remove() {
-        this.view.remove();
     }
 }
