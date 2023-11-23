@@ -13,6 +13,11 @@ export default class ProjectController {
         this.view = view;
     }
 
+    addTaskInput() {
+        const element = this.elementFactory.buildTaskInput(this.project);
+        PubSub.publish(Topics.ADD_POP_UP, element);
+    }
+
     updateView() {
         PubSub.publishSync(Topics.FINALIZE_ALL_TASKS);
         const elements = this.project.items.map(
@@ -25,10 +30,5 @@ export default class ProjectController {
 
     update() {
         this.updateView();
-    }
-
-    addTaskInput() {
-        const element = this.elementFactory.buildTaskInput(this.project);
-        PubSub.publish(Topics.ADD_POP_UP, element);
     }
 }
