@@ -9,8 +9,8 @@ export default class ChecklistItemController {
     }
 
     updateView() {
-        this.view.setDescription(item.description);
-        this.view.setCheckboxState(item.isDone);
+        this.view.setDescription(this.item.description);
+        this.view.setCheckboxState(this.item.isDone);
     }
 
     getData() {
