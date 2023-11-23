@@ -5,23 +5,7 @@ export default class ChecklistItemView {
         this.element = undefined;
     }
 
-    build() {
-        this.element = this.createTemplate();
-        this.updateState();
-        this.setInteractions();
-        return this.element;
-    }
-
-    createTemplate() {
-        const element = this.createMainNode();
-        element.append(
-            this.createDoneToggle(),
-            this.createDescriptionInput()
-        );
-        return element
-    }
-
-    createMainNode() {
+    createContainer() {
         const element = document.createElement('li');
         return element;
     }
@@ -38,16 +22,36 @@ export default class ChecklistItemView {
         return this.doneToggle;
     }
 
-    updateState() {
-        const data = this.controller.getData();
-        this.descriptionInput.setAttribute('value', `${data.description}`);
-        if (data.isDone) {
-            this.doneToggle.setAttribute('checked', '');
-        }
+    create() {
+        const element = this.createContainer();
+        element.append(
+            this.createDoneToggle(),
+            this.createDescriptionInput()
+        );
+        return element
     }
 
     setInteractions() {
         this.descriptionInput.addEventListener('change', (e) => {this.controller.changeDescription(e.target.value)});
         this.doneToggle.addEventListener('change', (e) => {this.controller.toggle()});
+    }
+    
+    build() {
+        this.element = this.create();
+        this.controller.updateView();
+        this.setInteractions();
+        return this.element;
+    }
+
+    setDescription(text) {
+        this.descriptionInput.setAttribute('value', `${text}`);
+    }
+
+    setCheckboxState(isOn) {
+        if (isOn) {
+            this.doneToggle.setAttribute('checked', '');
+        } else {
+            this.doneToggle.removeAttribute('checked', '');
+        }
     }
 }
