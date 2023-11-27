@@ -11,7 +11,7 @@ export default class Project extends CollectionWrapper {
     add(item) {
         super.add(item);
         item.link(this);
-        this.updateObservers();
+        if (this.observers !== undefined) {this.updateObservers();}
     }
 
     getDueToday() {
