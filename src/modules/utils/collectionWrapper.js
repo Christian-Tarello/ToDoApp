@@ -3,7 +3,7 @@ export default class CollectionWrapper {
         this.items = [];
 
         items.forEach((item) => {
-            this.addItem(item);
+            this.add(item);
         });
     }
 
