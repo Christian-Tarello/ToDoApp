@@ -6,8 +6,6 @@ export default class TaskController {
         this.task = task;
         this.task.addObserver(this);
         this.elementFactory = elementFactory;
-        this.subTokens = [];
-        this.setInteractions();
         this.view = undefined;
     }
 
@@ -33,7 +31,6 @@ export default class TaskController {
     }
 
     finalize() {
-        this.subTokens.forEach((token) => {PubSub.unsubscribe(token)});
         this.task.removeObserver(this);
     }
 
@@ -45,11 +42,5 @@ export default class TaskController {
         this.finalize();
         this.remove();
         this.task.unlink();
-    }
-
-    setInteractions() {
-        this.subTokens.push(
-            PubSub.subscribe(Topics.FINALIZE_ALL_TASKS, () => {this.finalize()}),
-        );
     }
 }

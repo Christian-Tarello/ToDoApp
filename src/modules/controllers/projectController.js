@@ -19,7 +19,6 @@ export default class ProjectController {
     }
 
     updateView() {
-        PubSub.publishSync(Topics.FINALIZE_ALL_TASKS);
         const elements = this.project.items.map(
             (item) => {
                 return this.elementFactory.buildTask(item);
