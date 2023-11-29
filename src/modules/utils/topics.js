@@ -7,14 +7,8 @@ const PopUpTopics = Object.freeze({
     REMOVE_CLICK_LOCK: "POP_UP.REMOVE_CLICK_LOCK",
 });
 
-const FinalizeElementTopics = Object.freeze({
-    FINALIZE_ELEMENT_TOPIC: "ELEMENT.FINALIZE",
-    FINALIZE_ALL_TASKS: "ELEMENT.FINALIZE.ALL_TASKS"
-})
-
 const Topics = Object.freeze({
-    ...PopUpTopics,
-    ...FinalizeElementTopics
+    ...PopUpTopics
 });
 
 export default Topics;
