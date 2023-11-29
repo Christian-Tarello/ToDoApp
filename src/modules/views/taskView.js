@@ -4,7 +4,6 @@ export default class TaskView {
         this.controller.setView(this);
         this.checklistElement = checklistElement;
         this.element = undefined;
-        this.interactiveElements = {};
     }
 
     createContainer() {
