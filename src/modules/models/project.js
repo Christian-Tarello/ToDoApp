@@ -1,17 +1,18 @@
 import { getDay, isThisWeek, isToday, isValid } from "date-fns";
 import CollectionWrapper from "../utils/collectionWrapper";
+import EventManager from "../utils/eventManager";
 
 export default class Project extends CollectionWrapper {
     constructor(name, items) {
         super(items);
         this.name = name;
-        this.observers = [];
+        this.eventManager = new EventManager();
     }
 
     add(item) {
         super.add(item);
         item.link(this);
-        if (this.observers !== undefined) {this.updateObservers();}
+        if (this.eventManager !== undefined) {this.updateObservers();}
     }
 
     getDueToday() {
@@ -41,16 +42,15 @@ export default class Project extends CollectionWrapper {
     }
 
     addObserver(observer) {
-        this.observers.push(observer);
+        this.eventManager.addObserver(observer);
     }
 
     removeObserver(observer) {
-        const index = this.observers.indexOf(observer);
-        this.observers.splice(index, 1);
+        this.eventManager.removeObserver(observer);
     }
 
     updateObservers() {
-        this.observers.forEach((observer) => observer.update());
+        this.eventManager.updateObservers();
     }
 
     setState(object) {
