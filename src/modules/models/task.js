@@ -1,6 +1,7 @@
 import Checklist from "./checklist";
 import createCounter from "../utils/counter";
 import Priority from "../utils/priority";
+import EventManager from "../utils/eventManager";
 
 const counter = createCounter();
 
@@ -15,7 +16,7 @@ export default class Task {
 
         this.checklist = new Checklist(this.id);
         this.project = undefined;
-        this.observers = [];
+        this.eventManager = new EventManager();
     }
 
     unlink() {
@@ -48,24 +49,15 @@ export default class Task {
     }
 
     addObserver(observer) {
-        this.observers.push(new WeakRef(observer));
+        this.eventManager.addObserver(observer);
     }
 
     removeObserver(observer) {
-        const index = this.observers.findIndex((ref) => ref.deref() === observer);
-        this.observers.splice(index, 1);
+        this.eventManager.removeObserver(observer);
     }
 
     updateObservers() {
-        this.observers.forEach((ref, index) => {
-            const observer = ref.deref();
-            if (observer) {
-                observer.update();
-            } else {
-                this.observers.splice(index, 1);
-            }
-        }
-        );
+        this.eventManager.updateObservers();
     }
 
     setState(object) {
