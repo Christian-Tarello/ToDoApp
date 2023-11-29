@@ -25,9 +25,27 @@ export default class ProjectController {
             }
         )
         this.view.replaceItems(elements);
+        this.view.setName(this.project.name);
     }
 
     update() {
         this.updateView();
+    }
+
+    finalize() {
+        this.project.removeObserver(this);
+    }
+
+    remove() {
+        this.view.remove();
+    }
+
+    delete() {
+        this.finalize();
+        this.remove();
+    }
+
+    changeName(name) {
+        this.project.setState({name});
     }
 }

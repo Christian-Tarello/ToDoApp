@@ -52,4 +52,13 @@ export default class Project extends CollectionWrapper {
     updateObservers() {
         this.observers.forEach((observer) => observer.update());
     }
+
+    setState(object) {
+        Object.entries(object).forEach(
+            ([key, value] = entry) => {
+                this[key] = value;
+            }
+        );
+        this.updateObservers();
+    }
 }
