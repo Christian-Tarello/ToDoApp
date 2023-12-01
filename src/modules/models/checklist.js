@@ -1,9 +1,8 @@
 import CollectionWrapper from "../utils/collectionWrapper";
 
 export default class Checklist extends CollectionWrapper {
-    constructor(id, items) {
+    constructor(items) {
         super(items)
-        this.id = id;
     }
 
     add(item) {
