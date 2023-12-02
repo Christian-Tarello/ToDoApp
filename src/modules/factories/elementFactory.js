@@ -12,6 +12,8 @@ import PopUpLayerView from "../views/popUpLayerView";
 import PopUpLayerController from "../controllers/popUpLayerController";
 import TaskEditInputView from "../views/taskEditInputView";
 import TaskEditInputController from "../controllers/taskEditInputController";
+import ProjectCollectionView from "../views/projectCollectionView";
+import ProjectCollectionController from "../controllers/projectCollectionController";
 
 export default class ElementFactory {
     buildChecklist(checklist) {
@@ -60,6 +62,16 @@ export default class ElementFactory {
 
     buildPopUpLayer() {
         const view = new PopUpLayerView(new PopUpLayerController());
+        const element = view.build();
+        return element;
+    }
+
+    buildProjectCollection(projectCollection, contentHook) {
+        const view = new ProjectCollectionView(new ProjectCollectionController(
+            projectCollection,
+            contentHook,
+            this
+        ));
         const element = view.build();
         return element;
     }

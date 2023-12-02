@@ -2,6 +2,7 @@ import Task from "../models/task";
 import Project from "../models/project";
 import ChecklistItem from "../models/checklistItem";
 import Checklist from "../models/checklist";
+import ProjectCollection from "../models/projectCollection";
 
 export default class ModelFactory {
     static createChecklist(items) {
@@ -23,5 +24,10 @@ export default class ModelFactory {
     static createProject(name, items) {
         const project = new Project(name, items);
         return project;
+    }
+
+    static createProjectCollection(items) {
+        const projectCollection = new ProjectCollection(items);
+        return projectCollection;
     }
 }
