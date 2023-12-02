@@ -8,10 +8,5 @@ const elementFactory = new ElementFactory();
 
 const testProject = ModelFactory.createProject('test');
 
-const projectElement = elementFactory.buildProject(testProject);
-const popUpLayerElement = elementFactory.buildPopUpLayer();
-
-contentHook.append(
-    projectElement,
-    popUpLayerElement
-);
+document.body.append(elementFactory.buildPopUpLayer());
+contentHook.append(elementFactory.buildProject(testProject));
