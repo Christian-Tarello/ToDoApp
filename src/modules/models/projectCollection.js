@@ -13,6 +13,10 @@ export default class ProjectCollection {
         this.collection.add(item);
     }
 
+    remove(item) {
+        this.collection.remove(item);
+    }
+
     getTasksDueToday() {
         const tasks = this.items.reduce((total, item) => {
             const due = item.getDueToday();
