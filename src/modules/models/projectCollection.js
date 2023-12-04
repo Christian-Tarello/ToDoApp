@@ -1,8 +1,16 @@
 import CollectionWrapper from "../utils/collectionWrapper";
 
-export default class ProjectCollection extends CollectionWrapper {
+export default class ProjectCollection {
     constructor(items) {
-        super(items);
+        this.collection = new CollectionWrapper(items);
+    }
+
+    get items() {
+        return this.collection.items;
+    }
+
+    add(item) {
+        this.collection.add(item);
     }
 
     getTasksDueToday() {
