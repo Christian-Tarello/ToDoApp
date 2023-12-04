@@ -12,7 +12,7 @@ export default class ProjectCollection {
 
     add(item) {
         this.collection.add(item);
-        item.link();
+        item.link(this);
     }
 
     remove(item) {
