@@ -65,10 +65,6 @@ export default class TaskView {
         return this.element;
     }
 
-    remove() {
-        this.element.remove();
-    }
-
     setContent(data) {
         this.contentHook.innerHTML = `
             <li>Title: ${data.title}</li>

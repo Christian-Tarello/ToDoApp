@@ -34,13 +34,8 @@ export default class TaskController {
         this.task.removeObserver(this);
     }
 
-    remove() {
-        this.view.remove();
-    }
-
     delete() {
         this.finalize();
-        this.remove();
         this.task.unlink();
     }
 }
