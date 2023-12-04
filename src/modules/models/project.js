@@ -6,6 +6,7 @@ export default class Project {
     constructor(name, items) {
         this.name = name;
         this.collection = new CollectionWrapper(items);
+        this.items.forEach((item) => item.link(this));
         this.eventManager = new EventManager();
         this.projectCollection = undefined;
     }

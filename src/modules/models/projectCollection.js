@@ -3,6 +3,7 @@ import CollectionWrapper from "../utils/collectionWrapper";
 export default class ProjectCollection {
     constructor(items) {
         this.collection = new CollectionWrapper(items);
+        this.items.forEach((item) => item.link(this));
     }
 
     get items() {

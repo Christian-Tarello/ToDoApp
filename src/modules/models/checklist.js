@@ -4,6 +4,7 @@ import EventManager from "../utils/eventManager";
 export default class Checklist {
     constructor(items) {
         this.collection = new CollectionWrapper(items);
+        this.items.forEach((item) => item.link(this));
         this.eventManager = new EventManager();
     }
 
