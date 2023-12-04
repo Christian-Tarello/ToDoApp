@@ -1,4 +1,3 @@
-import Checklist from "./checklist";
 import createCounter from "../utils/counter";
 import Priority from "../utils/priority";
 import EventManager from "../utils/eventManager";

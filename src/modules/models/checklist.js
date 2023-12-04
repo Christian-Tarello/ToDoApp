@@ -1,13 +1,21 @@
 import CollectionWrapper from "../utils/collectionWrapper";
 
-export default class Checklist extends CollectionWrapper {
+export default class Checklist {
     constructor(items) {
-        super(items)
+        this.collection = new CollectionWrapper(items);
+    }
+
+    get items() {
+        return this.collection.items;
     }
 
     add(item) {
-        super.add(item);
+        this.collection.add(item);
         item.link(this);
+    }
+
+    remove(item) {
+        this.collection.remove(item);
     }
 
     setDone() {
