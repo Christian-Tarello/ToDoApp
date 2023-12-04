@@ -20,4 +20,9 @@ export default class ChecklistItemController {
         this.view.setDescription(this.item.description);
         this.view.setCheckboxState(this.item.isDone);
     }
+
+    delete() {
+        this.view.remove();
+        this.item.unlink();
+    }
 }

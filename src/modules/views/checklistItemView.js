@@ -22,11 +22,19 @@ export default class ChecklistItemView {
         return this.doneToggle;
     }
 
+    createDeleteButton() {
+        this.deleteButton = document.createElement('button');
+        this.deleteButton.setAttribute('type', 'button');
+        this.deleteButton.innerText = 'X';
+        return this.deleteButton;
+    }
+
     create() {
         const element = this.createContainer();
         element.append(
             this.createDoneToggle(),
-            this.createDescriptionInput()
+            this.createDescriptionInput(),
+            this.createDeleteButton()
         );
         return element
     }
@@ -34,6 +42,7 @@ export default class ChecklistItemView {
     setInteractions() {
         this.descriptionInput.addEventListener('change', (e) => {this.controller.changeDescription(e.target.value)});
         this.doneToggle.addEventListener('change', (e) => {this.controller.toggle()});
+        this.deleteButton.addEventListener('click', () => {this.controller.delete()});
     }
     
     build() {
@@ -41,6 +50,10 @@ export default class ChecklistItemView {
         this.controller.updateView();
         this.setInteractions();
         return this.element;
+    }
+
+    remove() {
+        this.element.remove();
     }
 
     setDescription(text) {
