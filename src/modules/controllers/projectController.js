@@ -43,6 +43,7 @@ export default class ProjectController {
     delete() {
         this.finalize();
         this.remove();
+        this.project.unlink();
     }
 
     changeName(name) {
