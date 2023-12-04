@@ -52,10 +52,6 @@ export default class ChecklistItemView {
         return this.element;
     }
 
-    remove() {
-        this.element.remove();
-    }
-
     setDescription(text) {
         this.descriptionInput.setAttribute('value', `${text}`);
     }

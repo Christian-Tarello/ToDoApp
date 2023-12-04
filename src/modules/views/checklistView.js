@@ -42,10 +42,6 @@ export default class ChecklistView {
         return this.element;
     }
 
-    addItem(element) {
-        this.itemsHook.append(element);
-    }
-
     replaceItems(elements) {
         this.itemsHook.replaceChildren(...elements);
     }

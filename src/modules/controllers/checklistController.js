@@ -3,6 +3,7 @@ import ModelFactory from "../factories/modelFactory";
 export default class ChecklistController {
     constructor(checklist, elementFactory) {
         this.checklist = checklist;
+        this.checklist.addObserver(this);
         this.elementFactory = elementFactory;
         this.view = undefined;
     }
@@ -14,8 +15,6 @@ export default class ChecklistController {
     addEmptyItem() {
         const item = ModelFactory.createChecklistItem('');
         this.checklist.add(item);
-        const element = this.elementFactory.buildChecklistItem(item);
-        this.view.addItem(element);
     }
 
     updateView() {

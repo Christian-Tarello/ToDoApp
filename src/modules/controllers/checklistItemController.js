@@ -22,7 +22,6 @@ export default class ChecklistItemController {
     }
 
     delete() {
-        this.view.remove();
         this.item.unlink();
     }
 }
