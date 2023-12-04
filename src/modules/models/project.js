@@ -7,6 +7,7 @@ export default class Project {
         this.name = name;
         this.collection = new CollectionWrapper(items);
         this.eventManager = new EventManager();
+        this.projectCollection = undefined;
     }
 
     get items() {
@@ -22,6 +23,17 @@ export default class Project {
     remove(item) {
         this.collection.remove(item);
         this.updateObservers();
+    }
+
+    unlink() {
+        if (this.projectCollection) {
+            this.projectCollection.remove(this);
+        }
+    }
+
+    link(projectCollection) {
+        this.unlink();
+        this.projectCollection = projectCollection;
     }
 
     getDueToday() {
