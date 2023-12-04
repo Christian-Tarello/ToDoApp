@@ -2,17 +2,26 @@ import { getDay, isThisWeek, isToday, isValid } from "date-fns";
 import CollectionWrapper from "../utils/collectionWrapper";
 import EventManager from "../utils/eventManager";
 
-export default class Project extends CollectionWrapper {
+export default class Project {
     constructor(name, items) {
-        super(items);
         this.name = name;
+        this.collection = new CollectionWrapper(items);
         this.eventManager = new EventManager();
     }
 
+    get items() {
+        return this.collection.items;
+    }
+
     add(item) {
-        super.add(item);
+        this.collection.add(item);
         item.link(this);
-        if (this.eventManager !== undefined) {this.updateObservers();}
+        this.updateObservers();
+    }
+
+    remove(item) {
+        this.collection.remove(item);
+        this.updateObservers();
     }
 
     getDueToday() {

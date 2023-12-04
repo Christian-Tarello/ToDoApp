@@ -31,8 +31,4 @@ export default class CollectionWrapper {
     clean() {
         this.items = [];
     }
-
-    items() {
-        return this.items;
-    }
 }
