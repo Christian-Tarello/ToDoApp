@@ -3,6 +3,7 @@ import ModelFactory from "../factories/modelFactory";
 export default class ProjectCollectionController {
     constructor(projectCollection, contentHook, elementFactory) {
         this.projectCollection = projectCollection;
+        this.projectCollection.addObserver(this);
         this.contentHook = contentHook;
         this.elementFactory = elementFactory;
 
@@ -28,10 +29,6 @@ export default class ProjectCollectionController {
 
     displayProject(project) {
         this.contentHook.replaceChildren(this.elementFactory.buildProject(project));
-    }
-
-    deleteProject(project) {
-        this.projectCollection.remove(project);
     }
 
     createEmptyProject() {

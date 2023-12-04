@@ -18,23 +18,13 @@ export default class ProjectCollectionView {
 
     createProjectButton(project) {
         const container = document.createElement('div');
-        {
-            const button = document.createElement('button');
-            button.setAttribute('type', 'button');
-            button.innerText = project.name;
-            button.addEventListener('click', () => this.controller.displayProject(project));
-            container.append(button);
-        }
-        {
-            const button = document.createElement('button');
-            button.setAttribute('type', 'button');
-            button.innerText = 'X';
-            button.addEventListener('click', () => {
-                this.controller.deleteProject(project);
-                container.remove();
-            });
-            container.append(button);
-        }
+
+        const button = document.createElement('button');
+        button.setAttribute('type', 'button');
+        button.innerText = project.name;
+        button.addEventListener('click', () => this.controller.displayProject(project));
+        
+        container.append(button);
         return container;
     }
 

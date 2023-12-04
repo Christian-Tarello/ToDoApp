@@ -1,9 +1,11 @@
 import CollectionWrapper from "../utils/collectionWrapper";
+import EventManager from "../utils/eventManager";
 
 export default class ProjectCollection {
     constructor(items) {
         this.collection = new CollectionWrapper(items);
         this.items.forEach((item) => item.link(this));
+        this.eventManager = new EventManager();
     }
 
     get items() {
@@ -13,10 +15,12 @@ export default class ProjectCollection {
     add(item) {
         this.collection.add(item);
         item.link(this);
+        this.updateObservers();
     }
 
     remove(item) {
         this.collection.remove(item);
+        this.updateObservers();
     }
 
     getTasksDueToday() {
@@ -37,5 +41,17 @@ export default class ProjectCollection {
             }
         }, []);
         return tasks;
+    }
+
+    addObserver(observer) {
+        this.eventManager.addObserver(observer);
+    }
+
+    removeObserver(observer) {
+        this.eventManager.removeObserver(observer);
+    }
+
+    updateObservers() {
+        this.eventManager.updateObservers();
     }
 }
