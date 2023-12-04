@@ -36,8 +36,7 @@ export default class Project extends CollectionWrapper {
 
     removeById(id) {
         const item = this.getById(id);
-        const position = this.items.indexOf(item);
-        this.remove(position);
+        this.remove(item);
         this.updateObservers();
     }
 

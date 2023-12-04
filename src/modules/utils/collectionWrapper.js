@@ -11,7 +11,8 @@ export default class CollectionWrapper {
         this.items.push(item);
     }
 
-    remove(position) {
+    remove(item) {
+        const position = this.items.findIndex((value) => value === item);
         this.items.splice(position, 1);
     }
 
@@ -29,10 +30,6 @@ export default class CollectionWrapper {
 
     clean() {
         this.items = [];
-    }
-
-    isEmpty() {
-        return this.items.length === 0;
     }
 
     items() {

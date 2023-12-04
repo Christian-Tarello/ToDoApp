@@ -21,7 +21,7 @@ export default class Task {
 
     unlink() {
         if (this.project) {
-            this.project.removeById(this.id);
+            this.project.remove(this);
         }
     }
 

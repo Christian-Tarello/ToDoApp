@@ -8,9 +8,7 @@ export default class ChecklistItem {
 
     unlink() {
         if (this.checklist === undefined) {return;}
-        const index = this.checklist.items.indexOf(this);
-        if (index === -1) {return;}
-        this.checklist.remove(index);
+        this.checklist.remove(this);
     }
 
     link(checklist) {

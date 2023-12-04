@@ -31,8 +31,7 @@ export default class ProjectCollectionController {
     }
 
     deleteProject(project) {
-        const index = this.projectCollection.items.findIndex((item) => item === project);
-        this.projectCollection.remove(index);
+        this.projectCollection.remove(project);
     }
 
     createEmptyProject() {
