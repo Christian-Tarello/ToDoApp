@@ -16,18 +16,6 @@ export default class ProjectCollectionView {
         return this.addButton;
     }
 
-    createProjectButton(project) {
-        const container = document.createElement('div');
-
-        const button = document.createElement('button');
-        button.setAttribute('type', 'button');
-        button.innerText = project.name;
-        button.addEventListener('click', () => this.controller.displayProject(project));
-        
-        container.append(button);
-        return container;
-    }
-
     createContentHook() {
         this.contentHook = document.createElement('div');
         return this.contentHook;

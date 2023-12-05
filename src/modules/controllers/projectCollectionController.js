@@ -17,7 +17,7 @@ export default class ProjectCollectionController {
     updateView() {
         const elements = this.projectCollection.items.map(
             (item) => {
-                return this.view.createProjectButton(item);
+                return this.elementFactory.buildCollectionButton(item, this.contentHook);
             }
         )
         this.view.replaceItems(elements);

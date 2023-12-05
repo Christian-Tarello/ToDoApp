@@ -14,6 +14,8 @@ import TaskEditInputView from "../views/taskEditInputView";
 import TaskEditInputController from "../controllers/taskEditInputController";
 import ProjectCollectionView from "../views/projectCollectionView";
 import ProjectCollectionController from "../controllers/projectCollectionController";
+import CollectionButtonView from "../views/collectionButtonView";
+import CollectionButtonController from "../controllers/collectionButtonController";
 
 export default class ElementFactory {
     buildChecklist(checklist) {
@@ -69,6 +71,16 @@ export default class ElementFactory {
     buildProjectCollection(projectCollection, contentHook) {
         const view = new ProjectCollectionView(new ProjectCollectionController(
             projectCollection,
+            contentHook,
+            this
+        ));
+        const element = view.build();
+        return element;
+    }
+
+    buildCollectionButton(project, contentHook) {
+        const view = new CollectionButtonView(new CollectionButtonController(
+            project,
             contentHook,
             this
         ));
