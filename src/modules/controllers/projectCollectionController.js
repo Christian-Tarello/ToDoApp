@@ -34,6 +34,5 @@ export default class ProjectCollectionController {
     createEmptyProject() {
         const project = ModelFactory.createProject('');
         this.projectCollection.add(project);
-        this.updateView();
     }
 }
