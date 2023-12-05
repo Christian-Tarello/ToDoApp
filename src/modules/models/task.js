@@ -1,12 +1,8 @@
-import createCounter from "../utils/counter";
 import Priority from "../utils/priority";
 import EventManager from "../utils/eventManager";
 
-const counter = createCounter();
-
 export default class Task {
     constructor(title, description, dueDate, priority = Priority.UNSET, checklist) {
-        this.id = counter();
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;

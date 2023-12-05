@@ -52,16 +52,6 @@ export default class Project {
         return due;
     }
 
-    getById(id) {
-        return this.items.find((item) => item.id === id);
-    }
-
-    removeById(id) {
-        const item = this.getById(id);
-        this.remove(item);
-        this.updateObservers();
-    }
-
     addObserver(observer) {
         this.eventManager.addObserver(observer);
     }
