@@ -1,24 +1,24 @@
+import CollectionButtonTemplate from "../templates/collectionButtonTemplate";
+
 export default class CollectionButtonView {
     constructor(controller) {
         this.controller = controller;
         this.controller.setView(this);
+        this.template = CollectionButtonTemplate;
     }
 
     createContainer() {
-        const container = document.createElement('div');
+        const container = this.template.createContainer();
         return container;
     }
 
     createButton() {
-        this.button = document.createElement('button');
-        this.button.setAttribute('type', 'button');
+        this.button = this.template.createButton();
         return this.button;
     }
 
     createDeleteButton() {
-        this.deleteButton = document.createElement('button');
-        this.deleteButton.setAttribute('type', 'button');
-        this.deleteButton.innerText = 'X';
+        this.deleteButton = this.template.createDeleteButton();
         return this.deleteButton;
     }
 
