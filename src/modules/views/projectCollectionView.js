@@ -1,23 +1,23 @@
+import ProjectCollectionTemplate from "../templates/projectCollectionTemplate";
+
 export default class ProjectCollectionView {
     constructor(controller) {
         this.controller = controller;
         this.controller.setView(this);
+        this.template = ProjectCollectionTemplate;
     }
 
     createContainer() {
-        const container = document.createElement('div');
-        return container;
+        return this.template.createContainer();
     }
 
     createAddButton() {
-        this.addButton = document.createElement('button');
-        this.addButton.setAttribute('type', 'button');
-        this.addButton.innerText = '+ Add Project';
+        this.addButton = this.template.createAddButton();
         return this.addButton;
     }
 
     createContentHook() {
-        this.contentHook = document.createElement('div');
+        this.contentHook = this.createContentHook();
         return this.contentHook;
     }
 
