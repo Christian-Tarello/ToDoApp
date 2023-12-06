@@ -17,7 +17,7 @@ export default class ProjectCollectionView {
     }
 
     createContentHook() {
-        this.contentHook = this.createContentHook();
+        this.contentHook = this.template.createContentHook();
         return this.contentHook;
     }
 
