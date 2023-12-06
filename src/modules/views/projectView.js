@@ -1,42 +1,41 @@
+import ProjectTemplate from "../templates/ProjectTemplate";
+
 export default class ProjectView {
     constructor(controller) {
         this.controller = controller;
         this.controller.setView(this);
         this.element = undefined;
+        
+        this.template = ProjectTemplate;
     }
 
     createContainer() {
-        const element = document.createElement('div');
+        const element = this.template.createContainer();
         return element;
     }
 
     createHeaderContainer() {
-        const element = document.createElement('div');
+        const element = this.template.createHeaderContainer();
         return element;
     }
 
     createNameInput() {
-        this.nameInput = document.createElement('input');
-        this.nameInput.setAttribute('type', 'text');
+        this.nameInput = this.template.createNameInput();
         return this.nameInput;
     }
 
     createDeleteButton() {
-        this.deleteButton = document.createElement('button');
-        this.deleteButton.setAttribute('type', 'button');
-        this.deleteButton.innerText = 'X';
+        this.deleteButton = this.template.createDeleteButton();
         return this.deleteButton;
     }
 
     createTasksHook() {
-        this.tasksHook = document.createElement('div');
+        this.tasksHook = this.template.createTasksHook()
         return this.tasksHook;
     }
 
     createAddTaskInputButton() {
-        this.addTaskInputButton = document.createElement("button");
-        this.addTaskInputButton.setAttribute("type", "button");
-        this.addTaskInputButton.innerText = 'Add Task +';
+        this.addTaskInputButton = this.template.createAddTaskInputButton();
         return this.addTaskInputButton;
     }
 
