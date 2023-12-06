@@ -1,4 +1,4 @@
-import ProjectTemplate from "../templates/ProjectTemplate";
+import ProjectTemplate from "../templates/projectTemplate";
 
 export default class ProjectView {
     constructor(controller) {
