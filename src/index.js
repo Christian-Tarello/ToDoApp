@@ -7,7 +7,7 @@ const contentHook = document.querySelector(".content");
 
 const elementFactory = new ElementFactory();
 
-const projectCollection = ModelFactory.createProjectCollection();
+const todo = ModelFactory.createTodo(ModelFactory.createProject('Inbox'), ModelFactory.createProjectCollection());
 
 document.body.append(elementFactory.buildPopUpLayer());
-sidebarHook.append(elementFactory.buildProjectCollection(projectCollection, contentHook));
+sidebarHook.append(elementFactory.buildTodo(todo, contentHook));

@@ -55,4 +55,9 @@ export default class TodoView {
         );
         return element;
     }
+
+    build() {
+        this.element = this.create();
+        return this.element;
+    }
 }

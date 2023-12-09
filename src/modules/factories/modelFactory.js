@@ -3,6 +3,7 @@ import Project from "../models/project";
 import ChecklistItem from "../models/checklistItem";
 import Checklist from "../models/checklist";
 import ProjectCollection from "../models/projectCollection";
+import TodoList from "../models/todoList";
 
 export default class ModelFactory {
     static createChecklist(items) {
@@ -29,5 +30,10 @@ export default class ModelFactory {
     static createProjectCollection(items) {
         const projectCollection = new ProjectCollection(items);
         return projectCollection;
+    }
+
+    static createTodo(project, projectCollection) {
+        const todo = new TodoList(project, projectCollection);
+        return todo;
     }
 }
