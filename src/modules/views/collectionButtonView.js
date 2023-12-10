@@ -7,28 +7,11 @@ export default class CollectionButtonView {
         this.template = CollectionButtonTemplate;
     }
 
-    createContainer() {
-        const container = this.template.createContainer();
-        return container;
-    }
-
-    createButton() {
-        this.button = this.template.createButton();
-        return this.button;
-    }
-
-    createDeleteButton() {
-        this.deleteButton = this.template.createDeleteButton();
-        return this.deleteButton;
-    }
-
     create() {
-        const element = this.createContainer();
-        element.append(
-            this.createButton(),
-            this.createDeleteButton()
-        );
-        return element;
+        const structure = CollectionButtonTemplate.create();
+        this.element = structure.element;
+        this.button = structure.button;
+        this.deleteButton = structure.deleteButton;
     }
 
     setInteractions() {
@@ -37,7 +20,7 @@ export default class CollectionButtonView {
     }
 
     build() {
-        this.element = this.create();
+        this.create();
         this.controller.updateView();
         this.setInteractions();
         return this.element;

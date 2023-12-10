@@ -16,5 +16,20 @@ export default class CollectionButtonTemplate {
         element.innerText = 'X';
         return element;
     }
+
+    static create() {
+        const element = CollectionButtonTemplate.createContainer();
+        const button = CollectionButtonTemplate.createButton()
+        const deleteButton = CollectionButtonTemplate.createDeleteButton();
+        element.append(
+            button,
+            deleteButton
+        );
+        return {
+            element,
+            button,
+            deleteButton
+        };
+    }
 }
 

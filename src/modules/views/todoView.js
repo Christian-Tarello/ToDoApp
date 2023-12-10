@@ -18,27 +18,36 @@ export default class TodoView {
     }
 
     createInboxButton() {
-        const container = CollectionButtonTemplate.createContainer();
-        this.inboxButton = CollectionButtonTemplate.createButton();
+        const obj = CollectionButtonTemplate.create();
+
+        this.inboxButton = obj.button;
         this.inboxButton.innerText = 'Inbox';
-        container.append(this.inboxButton);
-        return container;
+
+        obj.deleteButton.remove();
+
+        return obj.element;
     }
 
     createDueTodayButton() {
-        const container = CollectionButtonTemplate.createContainer();
-        this.dueTodayButton = CollectionButtonTemplate.createButton();
+        const obj = CollectionButtonTemplate.create();
+
+        this.dueTodayButton = obj.button;
         this.dueTodayButton.innerText = 'Today';
-        container.append(this.dueTodayButton);
-        return container;
+
+        obj.deleteButton.remove();
+
+        return obj.element;
     }
 
     createDueThisWeekButton() {
-        const container = CollectionButtonTemplate.createContainer();
-        this.dueThisWeekButton = CollectionButtonTemplate.createButton();
+        const obj = CollectionButtonTemplate.create();
+
+        this.dueThisWeekButton = obj.button;
         this.dueThisWeekButton.innerText = 'This Week';
-        container.append(this.dueThisWeekButton);
-        return container;
+
+        obj.deleteButton.remove();
+
+        return obj.element;
     }
 
     create() {
