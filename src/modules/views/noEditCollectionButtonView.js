@@ -25,10 +25,6 @@ export default class NoEditCollectionButtonView {
         return this.element;
     }
 
-    remove() {
-        this.element.remove();
-    }
-
     changeName(name) {
         this.button.innerText = name;
     }

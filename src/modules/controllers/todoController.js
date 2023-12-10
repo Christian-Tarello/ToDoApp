@@ -1,3 +1,5 @@
+import ModelFactory from "../factories/modelFactory";
+
 export default class TodoController {
     constructor(todo, contentHook, elementFactory) {
         this.todo = todo;

@@ -32,10 +32,6 @@ export default class NoEditProjectView {
         return this.element;
     }
 
-    remove() {
-        this.element.remove();
-    }
-
     replaceItems(elements) {
         this.tasksHook.replaceChildren(...elements);
     }
