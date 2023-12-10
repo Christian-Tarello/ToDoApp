@@ -29,6 +29,7 @@ export default class ProjectCollection {
             if (due) {
                 total.push(...due);
             }
+            return total;
         }, []);
         return tasks;
     }
@@ -39,6 +40,7 @@ export default class ProjectCollection {
             if (due) {
                 total.push(...due);
             }
+            return total;
         }, []);
         return tasks;
     }

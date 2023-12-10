@@ -6,13 +6,13 @@ export default class TodoList {
 
     getTasksDueToday() {
         const due = [];
-        due.push(...this.inbox.dueToday(), this.projectCollection.getTasksDueToday());
+        due.push(...this.inbox.getDueToday(), ...this.projectCollection.getTasksDueToday());
         return due;
     }
 
     getTasksDueThisWeek() {
         const due = [];
-        due.push(...this.inbox.dueThisWeek(), this.projectCollection.getTasksDueThisWeek());
+        due.push(...this.inbox.getDueThisWeek(), ...this.projectCollection.getTasksDueThisWeek());
         return due;
     }
 }

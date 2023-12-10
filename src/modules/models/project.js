@@ -38,16 +38,20 @@ export default class Project {
     }
 
     getDueToday() {
-        const due = this.items.filter((item) => 
-            isValid(item.dueDate) && isToday(item.dueDate)
+        const due = this.items.filter((item) => {
+            const dateObj = new Date(item.dueDate.replace('-', '/'));
+            return isValid(dateObj) && isToday(dateObj);
+        }
         );
         return due;
     }
 
     getDueThisWeek() {
         const todayWeekDay = getDay(new Date());
-        const due = this.items.filter((item) =>
-            isValid(item.dueDate) && isThisWeek(item.dueDate, {weekStartsOn: todayWeekDay})   
+        const due = this.items.filter((item) => {
+            const dateObj = new Date(item.dueDate.replace('-', '/'));
+            return isValid(dateObj) && isThisWeek(dateObj, {weekStartsOn: todayWeekDay})   
+        }
         );
         return due;
     }

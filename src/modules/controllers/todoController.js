@@ -1,4 +1,4 @@
-import ModelFactory from "../factories/modelFactory";
+import ProjectTemplate from "../templates/projectTemplate";
 
 export default class TodoController {
     constructor(todo, contentHook, elementFactory) {
@@ -13,13 +13,38 @@ export default class TodoController {
         this.view = view;
     }
 
-    updateView() {
-        this.view.replaceItems(
-            [
-            this.elementFactory.buildNoEditCollectionButton(this.todo.inbox, this.contentHook),
-            this.elementFactory.buildNoEditCollectionButton(this.todo.inbox, this.contentHook),
-            this.elementFactory.buildNoEditCollectionButton(this.todo.inbox, this.contentHook)
-            ]
-        )       
+    displayInbox() {
+        this.contentHook.replaceChildren(this.elementFactory.buildNoEditProject(this.todo.inbox));
+    }
+
+    createStaticProjectElement(name, taskList) {
+        const structure = ProjectTemplate.create();
+
+        structure.nameInput.setAttribute('readonly', '');
+        structure.nameInput.setAttribute('value', name)
+        structure.addTaskButton.remove();
+        structure.deleteButton.remove();
+
+        structure.tasksHook.replaceChildren(...taskList);
+
+        return structure.element;
+    }
+
+    displayDueToday() {
+        const dueToday = this.todo.getTasksDueToday();
+        if (dueToday.length !== 0) {
+            const taskElements = dueToday.map((task) => {return this.elementFactory.buildTask(task)});
+            const element = this.createStaticProjectElement('Today', taskElements);
+            this.contentHook.replaceChildren(element);
+        }
+    }
+
+    displayDueThisWeek() {
+        const dueThisWeek = this.todo.getTasksDueThisWeek();
+        if (dueThisWeek.length !== 0) {
+            const taskElements = dueThisWeek.map((task) => {return this.elementFactory.buildTask(task)});
+            const element = this.createStaticProjectElement('This Week', taskElements);
+            this.contentHook.replaceChildren(element);
+        }
     }
 }

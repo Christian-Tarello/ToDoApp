@@ -18,7 +18,6 @@ import CollectionButtonView from "../views/collectionButtonView";
 import CollectionButtonController from "../controllers/collectionButtonController";
 import TodoView from "../views/todoView";
 import TodoController from "../controllers/todoController";
-import NoEditCollectionButtonView from "../views/noEditCollectionButtonView";
 import NoEditProjectView from "../views/noEditProjectView";
 
 export default class ElementFactory {
@@ -93,16 +92,6 @@ export default class ElementFactory {
             project,
             contentHook,
             (project) => {return this.buildProject(project)}
-        ));
-        const element = view.build();
-        return element;
-    }
-
-    buildNoEditCollectionButton(project, contentHook) {
-        const view = new NoEditCollectionButtonView(new CollectionButtonController(
-            project,
-            contentHook,
-            (project) => {return this.buildNoEditProject(project);}
         ));
         const element = view.build();
         return element;
