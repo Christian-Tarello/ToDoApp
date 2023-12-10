@@ -9,59 +9,23 @@ export default class ProjectView {
         this.template = ProjectTemplate;
     }
 
-    createContainer() {
-        const element = this.template.createContainer();
-        return element;
-    }
-
-    createHeaderContainer() {
-        const element = this.template.createHeaderContainer();
-        return element;
-    }
-
-    createNameInput() {
-        this.nameInput = this.template.createNameInput();
-        return this.nameInput;
-    }
-
-    createDeleteButton() {
-        this.deleteButton = this.template.createDeleteButton();
-        return this.deleteButton;
-    }
-
-    createTasksHook() {
-        this.tasksHook = this.template.createTasksHook()
-        return this.tasksHook;
-    }
-
-    createAddTaskInputButton() {
-        this.addTaskInputButton = this.template.createAddTaskInputButton();
-        return this.addTaskInputButton;
-    }
-
     create() {
-        const element = this.createContainer();
-        const header = this.createHeaderContainer();
-        header.append(
-            this.createNameInput(),
-            this.createDeleteButton()
-        );
-        element.append(
-            header,
-            this.createTasksHook(),
-            this.createAddTaskInputButton()
-        )
-        return element;
+        const structure = ProjectTemplate.create();
+        this.element = structure.element;
+        this.nameInput = structure.nameInput;
+        this.deleteButton = structure.deleteButton;
+        this.tasksHook = structure.tasksHook;
+        this.addTaskButton = structure.addTaskButton;
     }
 
     setInteractions() {
-        this.addTaskInputButton.addEventListener('click', () => {this.controller.addTaskInput()});
+        this.addTaskButton.addEventListener('click', () => {this.controller.addTaskInput()});
         this.nameInput.addEventListener('change', (e) => this.controller.changeName(e.target.value));
         this.deleteButton.addEventListener('click', () => this.controller.delete());
     }
 
     build() {
-        this.element = this.create();
+        this.create();
         this.controller.updateView();
         this.setInteractions();
         return this.element;

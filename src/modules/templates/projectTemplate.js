@@ -33,4 +33,32 @@ export default class ProjectTemplate {
         element.innerText = 'Add Task +';
         return element;
     }
+
+    static create() {
+        const element = ProjectTemplate.createContainer();
+        const headerContainer = ProjectTemplate.createHeaderContainer();
+        const nameInput = ProjectTemplate.createNameInput();
+        const deleteButton = ProjectTemplate.createDeleteButton();
+        const tasksHook = ProjectTemplate.createTasksHook();
+        const addTaskButton = ProjectTemplate.createAddTaskInputButton();
+
+        headerContainer.append(
+            nameInput,
+            deleteButton
+        );
+
+        element.append(
+            headerContainer,
+            tasksHook,
+            addTaskButton
+        );
+
+        return {
+            element,
+            nameInput,
+            deleteButton,
+            tasksHook,
+            addTaskButton
+        }
+    }
 }
