@@ -21,48 +21,9 @@ export default class TodoView {
         return this.defaultCollection;
     }
 
-    createInboxButton() {
-        const obj = CollectionButtonTemplate.create();
-
-        this.inboxButton = obj.button;
-        this.inboxButton.innerText = 'Inbox';
-
-        obj.deleteButton.remove();
-
-        return obj.element;
-    }
-
-    createDueTodayButton() {
-        const obj = CollectionButtonTemplate.create();
-
-        this.dueTodayButton = obj.button;
-        this.dueTodayButton.innerText = 'Today';
-
-        obj.deleteButton.remove();
-
-        return obj.element;
-    }
-
-    createDueThisWeekButton() {
-        const obj = CollectionButtonTemplate.create();
-
-        this.dueThisWeekButton = obj.button;
-        this.dueThisWeekButton.innerText = 'This Week';
-
-        obj.deleteButton.remove();
-
-        return obj.element;
-    }
-
     create() {
         const element = this.createContainer();
         const defaultCollection = this.createDefaultCollection();
-        // contentHook is assigned by the creation of defaultCollection
-        this.contentHook.append(
-            this.createInboxButton(),
-            this.createDueTodayButton(),
-            this.createDueThisWeekButton()
-        );
         element.append(
             defaultCollection,
             this.projectCollectionElement
@@ -72,6 +33,11 @@ export default class TodoView {
 
     build() {
         this.element = this.create();
+        this.controller.updateView();
         return this.element;
+    }
+
+    replaceItems(elements) {
+        this.contentHook.replaceChildren(...elements);
     }
 }
