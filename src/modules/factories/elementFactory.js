@@ -19,6 +19,7 @@ import CollectionButtonController from "../controllers/collectionButtonControlle
 import TodoView from "../views/todoView";
 import TodoController from "../controllers/todoController";
 import NoEditCollectionButtonView from "../views/noEditCollectionButtonView";
+import NoEditProjectView from "../views/noEditProjectView";
 
 export default class ElementFactory {
     buildChecklist(checklist) {
@@ -43,6 +44,12 @@ export default class ElementFactory {
 
     buildProject(project) {
         const projectView = new ProjectView(new ProjectController(project, this));
+        const element = projectView.build();
+        return element;
+    }
+
+    buildNoEditProject(project) {
+        const projectView = new NoEditProjectView(new ProjectController(project, this));
         const element = projectView.build();
         return element;
     }
@@ -95,7 +102,7 @@ export default class ElementFactory {
         const view = new NoEditCollectionButtonView(new CollectionButtonController(
             project,
             contentHook,
-            (project) => {return this.buildProject(project);}
+            (project) => {return this.buildNoEditProject(project);}
         ));
         const element = view.build();
         return element;
