@@ -27,10 +27,6 @@ export default class ProjectCollectionController {
         this.updateView();
     }
 
-    displayProject(project) {
-        this.contentHook.replaceChildren(this.elementFactory.buildProject(project));
-    }
-
     createEmptyProject() {
         const project = ModelFactory.createProject('');
         this.projectCollection.add(project);
