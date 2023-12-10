@@ -12,7 +12,6 @@ export default class ProjectCollectionView {
         this.element = structure.element;
         this.addButton = structure.addButton;
         this.contentHook = structure.contentHook;
-        return element;
     }
 
     setInteractions() {
@@ -20,7 +19,7 @@ export default class ProjectCollectionView {
     }
 
     build() {
-        this.element = this.create();
+        this.create();
         this.controller.updateView();
         this.setInteractions();
         return this.element;
