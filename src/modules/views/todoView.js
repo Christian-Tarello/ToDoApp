@@ -13,8 +13,12 @@ export default class TodoView {
         return container;
     }
 
-    createContentContainer() {
-        return ProjectCollectionTemplate.createContainer();
+    createDefaultCollection() {
+        const obj = ProjectCollectionTemplate.create();
+        this.defaultCollection = obj.element;
+        this.contentHook = obj.contentHook;
+        obj.addButton.remove();
+        return this.defaultCollection;
     }
 
     createInboxButton() {
@@ -52,14 +56,15 @@ export default class TodoView {
 
     create() {
         const element = this.createContainer();
-        const content = this.createContentContainer();
-        content.append(
+        const defaultCollection = this.createDefaultCollection();
+        // contentHook is assigned by the creation of defaultCollection
+        this.contentHook.append(
             this.createInboxButton(),
             this.createDueTodayButton(),
             this.createDueThisWeekButton()
         );
         element.append(
-            content,
+            defaultCollection,
             this.projectCollectionElement
         );
         return element;

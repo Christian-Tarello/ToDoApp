@@ -15,4 +15,21 @@ export default class ProjectCollectionTemplate {
         const element = document.createElement('div');
         return element;
     }
+
+    static create() {
+        const element = ProjectCollectionTemplate.createContainer();
+        const addButton = ProjectCollectionTemplate.createAddButton();
+        const contentHook = ProjectCollectionTemplate.createContentHook();
+        
+        element.append(
+            addButton,
+            contentHook
+        );
+
+        return {
+            element,
+            addButton,
+            contentHook
+        };
+    }
 }

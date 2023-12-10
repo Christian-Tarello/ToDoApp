@@ -7,26 +7,11 @@ export default class ProjectCollectionView {
         this.template = ProjectCollectionTemplate;
     }
 
-    createContainer() {
-        return this.template.createContainer();
-    }
-
-    createAddButton() {
-        this.addButton = this.template.createAddButton();
-        return this.addButton;
-    }
-
-    createContentHook() {
-        this.contentHook = this.template.createContentHook();
-        return this.contentHook;
-    }
-
     create() {
-        const element = this.createContainer();
-        element.append(
-            this.createContentHook(),
-            this.createAddButton()
-        )
+        const structure = this.template.create();
+        this.element = structure.element;
+        this.addButton = structure.addButton;
+        this.contentHook = structure.contentHook;
         return element;
     }
 
