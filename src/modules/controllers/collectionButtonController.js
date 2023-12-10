@@ -1,9 +1,9 @@
 export default class CollectionButtonController {
-    constructor(project, contentHook, elementFactory) {
+    constructor(project, contentHook, buildProject) {
         this.project = project;
         this.project.addObserver(this);
         this.contentHook = contentHook;
-        this.elementFactory = elementFactory;
+        this.buildProject = buildProject;
 
         this.displayedElement = undefined;
 
@@ -43,7 +43,7 @@ export default class CollectionButtonController {
     }
 
     display() {
-        this.displayedElement = new WeakRef(this.elementFactory.buildProject(this.project));
+        this.displayedElement = new WeakRef(this.buildProject(this.project));
         this.contentHook.replaceChildren(this.displayedElement.deref());
     }
 }

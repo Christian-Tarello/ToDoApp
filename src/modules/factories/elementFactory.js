@@ -85,7 +85,7 @@ export default class ElementFactory {
         const view = new CollectionButtonView(new CollectionButtonController(
             project,
             contentHook,
-            this
+            (project) => {return this.buildProject(project)}
         ));
         const element = view.build();
         return element;
@@ -95,7 +95,7 @@ export default class ElementFactory {
         const view = new NoEditCollectionButtonView(new CollectionButtonController(
             project,
             contentHook,
-            this
+            (project) => {return this.buildProject(project);}
         ));
         const element = view.build();
         return element;
