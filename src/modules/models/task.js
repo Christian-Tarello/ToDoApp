@@ -14,6 +14,17 @@ export default class Task {
         this.eventManager = new EventManager();
     }
 
+    getData() {
+        return {
+            title: this.title,
+            description: this.description,
+            dueDate: this.dueDate,
+            priority: this.priority,
+            isDone: this.isDone,
+            checklist: this.checklist.getData()
+        };
+    }
+
     unlink() {
         if (this.project) {
             this.project.remove(this);

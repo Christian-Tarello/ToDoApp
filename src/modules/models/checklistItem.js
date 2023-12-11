@@ -6,6 +6,13 @@ export default class ChecklistItem {
         this.checklist = undefined;
     }
 
+    getData() {
+        return {
+            description: this.description,
+            isDone: this.isDone
+        };
+    }
+
     unlink() {
         if (this.checklist === undefined) {return;}
         this.checklist.remove(this);

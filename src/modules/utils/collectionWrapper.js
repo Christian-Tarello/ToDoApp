@@ -1,10 +1,6 @@
 export default class CollectionWrapper {
     constructor(items = []) {
-        this.items = [];
-
-        items.forEach((item) => {
-            this.add(item);
-        });
+        this.items = items;
     }
 
     add(item) {

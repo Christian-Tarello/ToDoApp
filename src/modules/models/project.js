@@ -15,6 +15,13 @@ export default class Project {
         return this.collection.items;
     }
 
+    getData() {
+        return {
+            name: this.name,
+            items: this.items.map((item) => item.getData())
+        };
+    }
+
     add(item) {
         this.collection.add(item);
         item.link(this);

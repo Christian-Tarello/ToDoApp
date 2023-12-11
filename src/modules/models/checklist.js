@@ -12,6 +12,10 @@ export default class Checklist {
         return this.collection.items;
     }
 
+    getData() {
+        return {items: this.items.map((item) => item.getData())}
+    }
+
     add(item) {
         this.collection.add(item);
         item.link(this);

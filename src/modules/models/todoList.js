@@ -4,6 +4,13 @@ export default class TodoList {
         this.projectCollection = projectCollection;
     }
 
+    getData() {
+        return {
+            inbox: this.inbox.getData(),
+            projectCollection: this.projectCollection.getData()
+        };
+    }
+
     getTasksDueToday() {
         const due = [];
         due.push(...this.inbox.getDueToday(), ...this.projectCollection.getTasksDueToday());
