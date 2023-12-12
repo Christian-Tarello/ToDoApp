@@ -21,11 +21,16 @@ import TodoController from "../controllers/todoController";
 import NoEditProjectView from "../views/noEditProjectView";
 
 export default class ElementFactory {
+    constructor(modelFactory) {
+        this.modelFactory = modelFactory;
+    }
+
     buildChecklist(checklist) {
         const view = new ChecklistView(
             new ChecklistController(
                 checklist,
-                this
+                this,
+                (...args) => {return this.modelFactory.createChecklistItem(...args);}
             )
         )
 
@@ -54,7 +59,7 @@ export default class ElementFactory {
     }
     
     buildTaskInput(project) {
-        const view = new TaskInputView(new TaskInputController(project));
+        const view = new TaskInputView(new TaskInputController(project, (...args) => {return this.modelFactory.createTask(...args);}));
         const element = view.build();
         return element;
     }
@@ -81,7 +86,8 @@ export default class ElementFactory {
         const view = new ProjectCollectionView(new ProjectCollectionController(
             projectCollection,
             contentHook,
-            this
+            this,
+            (...args) => {return this.modelFactory.createProject(...args);}
         ));
         const element = view.build();
         return element;

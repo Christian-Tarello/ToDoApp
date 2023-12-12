@@ -1,11 +1,10 @@
-import ModelFactory from "../factories/modelFactory";
-
 export default class ProjectCollectionController {
-    constructor(projectCollection, contentHook, elementFactory) {
+    constructor(projectCollection, contentHook, elementFactory, projectFactory) {
         this.projectCollection = projectCollection;
         this.projectCollection.addObserver(this);
         this.contentHook = contentHook;
         this.elementFactory = elementFactory;
+        this.projectFactory = projectFactory;
 
         this.view = undefined;
     }
@@ -28,7 +27,7 @@ export default class ProjectCollectionController {
     }
 
     createEmptyProject() {
-        const project = ModelFactory.createProject('');
+        const project = this.projectFactory('');
         this.projectCollection.add(project);
     }
 }

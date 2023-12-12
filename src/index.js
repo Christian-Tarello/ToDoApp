@@ -5,9 +5,11 @@ import './style.css';
 const sidebarHook = document.querySelector(".sidebar");
 const contentHook = document.querySelector(".content");
 
-const elementFactory = new ElementFactory();
+const modelFactory = new ModelFactory();
 
-const todo = ModelFactory.createTodo(ModelFactory.createProject('Inbox'), ModelFactory.createProjectCollection());
+const elementFactory = new ElementFactory(modelFactory);
+
+const todo = modelFactory.createTodo(modelFactory.createProject('Inbox'), modelFactory.createProjectCollection());
 
 document.body.append(elementFactory.buildPopUpLayer());
 sidebarHook.append(elementFactory.buildTodo(todo, contentHook));
