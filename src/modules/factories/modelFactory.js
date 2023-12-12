@@ -16,8 +16,10 @@ export default class ModelFactory {
         return item;
     }
 
-    static createTask(title, description, dueDate, priority) {
-        const checklist = ModelFactory.createChecklist();
+    static createTask(title, description, dueDate, priority, checklist) {
+        if (!checklist) {
+            checklist = ModelFactory.createChecklist();
+        }
         const task = new Task(title, description, dueDate, priority, checklist);
         return task;
     }
