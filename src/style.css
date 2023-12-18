@@ -11,15 +11,15 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     height: 100dvh;
+    background-color: #333333;
 }
 
 header {
-    background-color: #555555;
+    border-bottom: #505050 1px solid;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    height: 4rem;
-    padding-left: 1rem;
+    padding: 0.5rem 2rem;
 }
 
 .mainTitle-icon {
