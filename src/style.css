@@ -1,5 +1,5 @@
 @import "../node_modules/normalize.css/normalize.css";
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
 
 *,
 *::before,
@@ -38,4 +38,66 @@ header {
 main {
     display: grid;
     grid-template-columns: 20ch 1fr;
+}
+
+.collectionButton {
+    position: relative;
+    color: #eee;
+    border-radius: 0.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    font-family: 'Roboto', sans-serif;
+    transition: color 0.25s ease-in;
+    overflow: hidden;
+}
+
+.collectionButton:hover {
+    color: #333333;
+} 
+
+.collectionButton-button,
+.collectionButton-deleteButton {
+    color: inherit;
+    background-color: transparent;
+    border: 0px transparent;
+    padding: 0.5rem;
+}
+
+.collectionButton-button {
+    text-align: start;
+}
+
+.collectionButton::after,
+.collectionButton::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.collectionButton::after {
+    translate: 100%;
+    background-color: #d32f2f;
+    transition: translate 0.25s ease-in;
+}
+
+.collectionButton::before {
+    translate: -100%;
+    background-color: #eee;
+}
+
+.collectionButton:hover::before {
+    translate: 0;
+}
+
+.collectionButton:has(.collectionButton-deleteButton:hover) {
+    color: #eee;
+}
+
+.collectionButton:has(.collectionButton-deleteButton:hover)::after {
+    translate: 0;
 }
