@@ -101,3 +101,13 @@ main {
 .collectionButton:has(.collectionButton-deleteButton:hover)::after {
     translate: 0;
 }
+
+
+.todoCollection {
+    height: 100%;
+    padding: 1rem;
+    border-right: 1px #505050 solid;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

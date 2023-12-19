@@ -9,8 +9,9 @@ export default class TodoView {
     }
 
     createContainer() {
-        const container = document.createElement('div');
-        return container;
+        const element = document.createElement('div');
+        element.classList.add('todoCollection');
+        return element;
     }
 
     createButton(name) {
