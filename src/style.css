@@ -37,16 +37,32 @@ header {
 
 main {
     display: grid;
-    grid-template-columns: 20ch 1fr;
+    grid-template-columns: 30ch 1fr;
+}
+
+.sidebar,
+.content {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+
+.sidebar > *,
+.content > *{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: clip;
 }
 
 .collectionButton {
     position: relative;
     color: #eee;
     border-radius: 0.25rem;
+    font-family: inherit;
     display: grid;
     grid-template-columns: 1fr auto;
-    font-family: 'Roboto', sans-serif;
     transition: color 0.2s ease-in;
     overflow: hidden;
 }
@@ -112,7 +128,25 @@ main {
     height: 100%;
     padding: 1rem;
     border-right: 1px #505050 solid;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr;
     gap: 1rem;
+    
+}
+
+.projectCollection {
+    border-bottom: 1px #505050 solid;
+    overflow-y: auto;
+}
+
+.projectCollection-addButton {
+    border-radius: 0.25rem;
+    background-color: rgb(8, 145, 76);
+    padding: 0.5rem;
+    border: 0px transparent;
+    font-family: inherit;
+    color: #eee;
+    text-align: center;
+    display: block;
+    inline-size: 100%;
 }
