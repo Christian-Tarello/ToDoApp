@@ -136,12 +136,21 @@ main {
 
 .projectCollection {
     border-bottom: 1px #505050 solid;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
     overflow-y: auto;
+}
+
+.projectCollection-contentHook {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .projectCollection-addButton {
     border-radius: 0.25rem;
-    background-color: rgb(8, 145, 76);
+    background-color: #08914c;
     padding: 0.5rem;
     border: 0px transparent;
     font-family: inherit;
@@ -149,4 +158,11 @@ main {
     text-align: center;
     display: block;
     inline-size: 100%;
+    position: sticky;
+    top:0;
+    z-index: 1;
+}
+
+.projectCollection-addButton:hover {
+    background-color: #09a054;
 }
