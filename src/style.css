@@ -166,3 +166,43 @@ main {
 .projectCollection-addButton:hover {
     background-color: #09a054;
 }
+
+.project {
+    padding: 1rem;
+}
+
+.project-header {
+    background-color: #505050;
+    color: #eee;
+    font-size: 2rem;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+
+.project-nameInput {
+    flex: 1 1 auto;
+    background-color: transparent;
+    border: 0px transparent solid;
+    color: inherit;
+    border-bottom: #444 2px solid;
+}
+
+.project-nameInput:read-only {
+    cursor: default;
+    border: 0px transparent solid;
+}
+
+.project-nameInput:focus,
+.project-nameInput:hover {
+    border-color: #ccc;
+    outline: 0px transparent;
+}
+
+.project-deleteButton,
+.project-addButton {
+    background-color: transparent;
+    border: 0px transparent solid;
+    color: #eee;
+}
