@@ -131,7 +131,6 @@ export default class TaskFormTemplate {
         const element = document.createElement('button');
         element.setAttribute('type', 'button');
         element.append(node);
-        console.log(element)
         return element;
     }
 
