@@ -117,12 +117,14 @@ export default class TaskFormTemplate {
         const element = document.createElement('form');
         element.setAttribute('action', '');
         element.setAttribute('method', 'POST');
+        element.classList.add('taskForm');
         return element;
     }
 
     createSubmitButton(node) {
         const element = document.createElement('button');
         element.setAttribute('type', 'submit');
+        element.classList.add('taskForm-button', 'taskForm-button--submit');
         element.append(node);
         return element;
     }
@@ -130,6 +132,7 @@ export default class TaskFormTemplate {
     createCancelButton(node) {
         const element = document.createElement('button');
         element.setAttribute('type', 'button');
+        element.classList.add('taskForm-button', 'taskForm-button--cancel');
         element.append(node);
         return element;
     }
@@ -137,6 +140,7 @@ export default class TaskFormTemplate {
     createFieldList() {
         const element = document.createElement('ul');
         element.setAttribute('type', 'button');
+        element.classList.add('taskForm-fieldList');
         return element;
     }
 }
