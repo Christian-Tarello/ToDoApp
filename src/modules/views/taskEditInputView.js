@@ -11,9 +11,7 @@ export default class TaskEditInputView {
     }
 
     createFormElement() {
-        this.formElement = document.createElement('form');
-        this.formElement.setAttribute('action', '');
-        this.formElement.setAttribute('method', 'POST');
+        this.formElement = this.template.createFormElement();
         return this.formElement;
     }
 
@@ -22,21 +20,21 @@ export default class TaskEditInputView {
     }
 
     createContentHook() {
-        this.contentHook = document.createElement('ul');
+        this.contentHook = this.template.createFieldList();
         return this.contentHook;
     }
 
     createSubmitButton() {
-        this.submitButton = document.createElement('button');
-        this.submitButton.setAttribute('type', 'submit');
-        this.submitButton.innerText = 'Edit Task';
+        this.submitButton = this.template.createSubmitButton(
+            document.createTextNode('Edit Task')
+        );
         return this.submitButton;
     }
 
     createCancelButton() {
-        this.cancelButton = document.createElement('button');
-        this.cancelButton.setAttribute('type', 'button');
-        this.cancelButton.innerText = 'Cancel';
+        this.cancelButton = this.template.createCancelButton(
+            document.createTextNode('Cancel')
+        );
         return this.cancelButton;
     }
 

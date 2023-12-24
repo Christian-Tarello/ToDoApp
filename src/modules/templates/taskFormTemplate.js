@@ -1,12 +1,14 @@
 export default class TaskFormTemplate {
     createInputWrapper() {
         const element = document.createElement('li');
+        element.classList.add('taskForm-field');
         return element;
     }
 
     createLabel(label, name) {
         const element = document.createElement('label');
         element.setAttribute('for', name);
+        element.classList.add('taskForm-label');
         element.innerText = label;
         return element;
     }
@@ -18,6 +20,7 @@ export default class TaskFormTemplate {
         element.setAttribute('name', name);
         element.setAttribute('required', '');
         element.setAttribute('value', value);
+        element.classList.add('taskForm-text');
         return element
     }
 
@@ -26,6 +29,7 @@ export default class TaskFormTemplate {
         element.setAttribute('id', name);
         element.setAttribute('name', name);
         element.append(...optionElements);
+        element.classList.add('taskForm-select');
         return element;
     }
 
@@ -34,6 +38,7 @@ export default class TaskFormTemplate {
         element.setAttribute('value', value);
         element.innerText = label;
         if (isSelected) {element.setAttribute('selected', '');}
+        element.classList.add('taskForm-option');
         return element;
     }
 
@@ -43,6 +48,7 @@ export default class TaskFormTemplate {
         element.setAttribute('id', name);
         element.setAttribute('name', name);
         element.setAttribute('value', value);
+        element.classList.add('taskForm-date');
         return element
     }
 
@@ -107,5 +113,31 @@ export default class TaskFormTemplate {
         }
     }
 
-    
+    createFormElement() {
+        const element = document.createElement('form');
+        element.setAttribute('action', '');
+        element.setAttribute('method', 'POST');
+        return element;
+    }
+
+    createSubmitButton(node) {
+        const element = document.createElement('button');
+        element.setAttribute('type', 'submit');
+        element.append(node);
+        return element;
+    }
+
+    createCancelButton(node) {
+        const element = document.createElement('button');
+        element.setAttribute('type', 'button');
+        element.append(node);
+        console.log(element)
+        return element;
+    }
+
+    createFieldList() {
+        const element = document.createElement('ul');
+        element.setAttribute('type', 'button');
+        return element;
+    }
 }
