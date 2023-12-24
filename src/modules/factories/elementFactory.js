@@ -8,8 +8,6 @@ import ChecklistView from "../views/checklistView";
 import ChecklistController from "../controllers/checklistController";
 import ChecklistItemView from "../views/checklistItemView";
 import ChecklistItemController from "../controllers/checklistItemController";
-import PopUpLayerView from "../views/popUpLayerView";
-import PopUpLayerController from "../controllers/popUpLayerController";
 import TaskEditInputView from "../views/taskEditInputView";
 import TaskEditInputController from "../controllers/taskEditInputController";
 import ProjectCollectionView from "../views/projectCollectionView";
@@ -21,8 +19,9 @@ import TodoController from "../controllers/todoController";
 import NoEditProjectView from "../views/noEditProjectView";
 
 export default class ElementFactory {
-    constructor(modelFactory) {
+    constructor(modelFactory, popUpLayer) {
         this.modelFactory = modelFactory;
+        this.popUpLayer = popUpLayer;
     }
 
     buildChecklist(checklist) {
@@ -41,13 +40,13 @@ export default class ElementFactory {
 
     buildTask(task) {
         const checklistElement = this.buildChecklist(task.checklist)
-        const view = new TaskView(new TaskController(task, this), checklistElement);
+        const view = new TaskView(new TaskController(task, this, this.popUpLayer), checklistElement);
         const element = view.build();
         return element;
     }
 
     buildProject(project) {
-        const projectView = new ProjectView(new ProjectController(project, this));
+        const projectView = new ProjectView(new ProjectController(project, this, this.popUpLayer));
         const element = projectView.build();
         return element;
     }
@@ -72,12 +71,6 @@ export default class ElementFactory {
 
     buildChecklistItem(item) {
         const view = new ChecklistItemView(new ChecklistItemController(item));
-        const element = view.build();
-        return element;
-    }
-
-    buildPopUpLayer() {
-        const view = new PopUpLayerView(new PopUpLayerController());
         const element = view.build();
         return element;
     }

@@ -1,11 +1,9 @@
-import PubSub from "pubsub-js";
-import Topics from "../utils/topics";
-
 export default class TaskController {
-    constructor(task, elementFactory) {
+    constructor(task, elementFactory, popUpLayer) {
         this.task = task;
         this.task.addObserver(this);
         this.elementFactory = elementFactory;
+        this.popUpLayer = popUpLayer;
         this.view = undefined;
     }
 
@@ -19,7 +17,7 @@ export default class TaskController {
 
     addEditTaskInput() {
         const element = this.elementFactory.buildTaskEditInput(this.task);
-        PubSub.publish(Topics.ADD_POP_UP, element);
+        this.popUpLayer.addPopUp(element, true, true);
     }
 
     updateView() {
