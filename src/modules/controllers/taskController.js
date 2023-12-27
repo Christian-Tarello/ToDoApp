@@ -15,13 +15,28 @@ export default class TaskController {
         this.task.toggleDone();
     }
 
-    addEditTaskInput() {
-        const element = this.elementFactory.buildTaskEditInput(this.task);
-        this.popUpLayer.addPopUp(element, true, true);
+    changeTitle(title) {
+        this.task.title = title;
+    }
+
+    changeDescription(description) {
+        this.task.description = description;
+    }
+
+    changePriority(priority) {
+        this.task.priority = priority;
+    }
+
+    changeDueDate(date) {
+        this.task.dueDate = date;
     }
 
     updateView() {
-        this.view.setContent(this.task);
+        this.view.setDone(this.task.isDone);
+        this.view.setTitle(this.task.title);
+        this.view.setDescription(this.task.description);
+        this.view.setPriority(this.task.priority);
+        this.view.setDueDate(this.task.dueDate);
     }
 
     update() {

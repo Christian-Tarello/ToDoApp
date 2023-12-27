@@ -8,8 +8,6 @@ import ChecklistView from "../views/checklistView";
 import ChecklistController from "../controllers/checklistController";
 import ChecklistItemView from "../views/checklistItemView";
 import ChecklistItemController from "../controllers/checklistItemController";
-import TaskEditInputView from "../views/taskEditInputView";
-import TaskEditInputController from "../controllers/taskEditInputController";
 import ProjectCollectionView from "../views/projectCollectionView";
 import ProjectCollectionController from "../controllers/projectCollectionController";
 import CollectionButtonView from "../views/collectionButtonView";
@@ -59,12 +57,6 @@ export default class ElementFactory {
     
     buildTaskInput(project) {
         const view = new TaskInputView(new TaskInputController(project, (...args) => {return this.modelFactory.createTask(...args);}));
-        const element = view.build();
-        return element;
-    }
-
-    buildTaskEditInput(task) {
-        const view = new TaskEditInputView(new TaskEditInputController(task));
         const element = view.build();
         return element;
     }
