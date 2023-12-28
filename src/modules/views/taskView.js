@@ -9,35 +9,41 @@ export default class TaskView {
 
     createContainer() {
         const element = document.createElement('div');
+        element.classList.add('task');
         return element;
     }
 
     createHeaderContainer() {
         const element = document.createElement('div');
+        element.classList.add('task-header');
         return element;
     }
 
     createDisplayCheckbox() {
         this.displayCheckbox = document.createElement('input');
         this.displayCheckbox.setAttribute('type', 'checkbox');
+        this.displayCheckbox.classList.add('task-displayToggle');
         return this.displayCheckbox;
     }
 
     createDoneToggle() {
         this.doneToggle = document.createElement('input');
         this.doneToggle.setAttribute('type', 'checkbox');
+        this.doneToggle.classList.add('task-doneToggle');
         return this.doneToggle;
     }
 
     createTitleInput() {
         this.titleInput = document.createElement('input');
         this.titleInput.setAttribute('type', 'text');
+        this.titleInput.classList.add('task-titleInput');
         return this.titleInput;
     }
 
     createDateInput() {
         this.dateInput = document.createElement('input');
         this.dateInput.setAttribute('type', 'date');
+        this.dateInput.classList.add('task-dateInput');
         return this.dateInput;
     }
 
@@ -45,33 +51,39 @@ export default class TaskView {
         const element = document.createElement('input');
         element.setAttribute('type', 'checkbox');
         element.setAttribute('value', value);
+        element.classList.add('prioritySelector-priority');
         return element;
     }
 
     createPrioritiesContainer() {
         const element = document.createElement('span');
+        element.classList.add('prioritySelector');
         return element;
     }
 
     createPriorityElements() {
-        this.priorityElements = Object.values(Priority).map((value) => this.createPriority(value));
+        this.priorityElements = Object.values(Priority).toReversed().map((value) => this.createPriority(value));
         return this.priorityElements;
     }
 
     createDeleteButton() {
         this.deleteButton = document.createElement('button');
         this.deleteButton.setAttribute('type', 'button');
+        this.deleteButton.classList.add('task-deleteButton');
+        this.deleteButton.innerText = "X";
         return this.deleteButton;
     }
 
     createBodyContainer() {
         this.bodyContainer = document.createElement('div');
+        this.bodyContainer.classList.add('task-body');
         this.setBodyVisibility(false);
         return this.bodyContainer;
     }
 
     createDescriptionInput() {
         this.descriptionInput = document.createElement('textarea');
+        this.descriptionInput.classList.add('task-descriptionInput');
         return this.descriptionInput;
     }
 
@@ -156,10 +168,10 @@ export default class TaskView {
 
     setBodyVisibility(isVisible) {
         if (isVisible) {
-            this.bodyContainer.style.display = 'initial';
+            this.bodyContainer.classList.remove('task-body--hidden');
         }
         else {
-            this.bodyContainer.style.display = 'none';
+            this.bodyContainer.classList.add('task-body--hidden');
         }
     }
 }

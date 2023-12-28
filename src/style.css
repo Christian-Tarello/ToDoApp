@@ -196,7 +196,7 @@ main {
 
 .project-nameInput:focus,
 .project-nameInput:hover {
-    border-color: #ccc;
+    border-color: gray;
     outline: 0px transparent;
 }
 
@@ -205,4 +205,188 @@ main {
     background-color: transparent;
     border: 0px transparent solid;
     color: #eee;
+}
+
+.task-header {
+    padding: 0.5rem;
+    border-bottom: 1px solid gray;
+    color: #eee;
+    display: grid;
+    grid-template-areas: 
+    "displayToggle doneToggle titleInput prioritySelector deleteButton"
+    "displayToggle doneToggle dateInput prioritySelector deleteButton";
+    grid-template-columns: auto auto auto auto 1fr;
+    grid-auto-rows: 1fr;
+    gap: 0.25rem 1rem;
+    justify-content: start;
+    align-items: center;
+}
+
+.task-header > *:last-child {
+    justify-self: end;
+}
+
+.task-displayToggle {
+    grid-area: displayToggle;
+    display: grid;
+    place-items: center;
+    align-self: center;
+    height: 50%;
+    appearance: none;
+    aspect-ratio: 1/1;
+}
+
+.task-displayToggle::before {
+    content: ' ';
+    display: block;
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-image: url('./assets/displayToggle.svg');
+    rotate: 180deg;
+    transition: rotate 0.5s cubic-bezier(0.41, 2.03, 0.46, 0.56);
+}
+
+.task-displayToggle:checked:before {
+    rotate: 0deg;
+}
+
+.task-doneToggle {
+    grid-area: doneToggle;
+    display: grid;
+    place-items: center;
+    appearance: none;
+    aspect-ratio: 1/1;
+    height: 50%;
+}
+
+.task-doneToggle::before {
+    content: ' ';
+    display: block;
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: #505050;
+    border-radius: 25%;
+}
+
+.task-doneToggle:checked:before {
+    background-color: grey;
+}
+
+.task-titleInput {
+    grid-area: titleInput;
+    color: inherit;
+    border-bottom: 1px solid transparent;
+}
+
+.task-dateInput {
+    grid-area: dateInput;
+    position: relative;
+    color: gray;
+}
+
+.task-titleInput,
+.task-dateInput {
+    background-color: transparent;
+    border: 0px solid transparent;
+}
+
+.task-titleInput:focus {
+    outline: 0px transparent;
+}
+
+.task-dateInput:focus {
+    outline: 0px transparent;
+    color: #eee;
+}
+
+.task-dateInput:hover {
+    color: #eee;
+}
+
+.task-dateInput::-webkit-calendar-picker-indicator {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+    background: 0 0;
+    margin: 0;
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.task-header .prioritySelector {
+    grid-area: prioritySelector;
+    height: 1rem;
+}
+
+.task-deleteButton {
+    grid-area: deleteButton;
+    background-color: transparent;
+    border: 0px solid transparent;
+    color: #505050;
+    height: fit-content;
+    transform: scaleX(120%);
+    font-size: 1.2rem;
+    padding: 0.25rem;
+}
+
+.task-deleteButton:hover,
+.task-deleteButton:focus {
+    color: #606060;
+}
+
+.task-body--hidden {
+    display: none;
+}
+
+.prioritySelector {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.prioritySelector-priority {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1/1;
+    appearance: none;
+    background-color: #505050;
+    border-radius: 25%;
+    overflow: hidden;
+}
+
+.prioritySelector-priority:hover {
+    background-color: #606060;
+}
+
+.prioritySelector-priority::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    translate: 0% 100%;
+    transition: translate .25s ease-in-out;
+}
+
+.prioritySelector-priority:checked::before {
+    translate: 0%;
+}
+
+.prioritySelector-priority[value="High"]::before {
+    background-color: #c73c3c;
+}
+
+.prioritySelector-priority[value="Medium"]::before {
+    background-color: #c79f2c;
+}
+
+.prioritySelector-priority[value="Low"]::before {
+    background-color: #08914c;
+}
+
+.prioritySelector-priority[value="Unset"]::before {
+    background-color: grey;
 }
