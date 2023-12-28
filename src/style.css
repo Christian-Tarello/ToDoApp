@@ -172,7 +172,6 @@ main {
 }
 
 .project-header {
-    background-color: #505050;
     color: #eee;
     font-size: 2rem;
     display: flex;
@@ -186,7 +185,6 @@ main {
     background-color: transparent;
     border: 0px transparent solid;
     color: inherit;
-    border-bottom: #444 2px solid;
 }
 
 .project-nameInput:read-only {
@@ -200,16 +198,33 @@ main {
     outline: 0px transparent;
 }
 
+.project-deleteButton {
+    scale: 125% 100%;
+    color: #505050;
+}
+
+.project-deleteButton:hover {
+    color: #606060;
+}
+
 .project-deleteButton,
 .project-addButton {
     background-color: transparent;
     border: 0px transparent solid;
+}
+
+.project-addButton {
+    color: grey;
+    margin-top: 1rem;
+}
+
+.project-addButton:hover {
     color: #eee;
 }
 
 .task-header {
     padding: 0.5rem;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #505050;
     color: #eee;
     display: grid;
     grid-template-areas: 

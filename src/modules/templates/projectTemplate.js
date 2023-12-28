@@ -49,8 +49,8 @@ export default class ProjectTemplate {
         const addTaskButton = ProjectTemplate.createAddTaskInputButton();
 
         headerContainer.append(
-            deleteButton,
-            nameInput
+            nameInput,
+            deleteButton
         );
 
         element.append(
