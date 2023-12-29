@@ -84,6 +84,7 @@ export default class TaskView {
     createDescriptionInput() {
         this.descriptionInput = document.createElement('textarea');
         this.descriptionInput.classList.add('task-descriptionInput');
+        this.descriptionInput.setAttribute('placeholder', 'Type here...')
         return this.descriptionInput;
     }
 

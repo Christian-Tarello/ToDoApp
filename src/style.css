@@ -356,6 +356,24 @@ main {
     display: none;
 }
 
+.task-body {
+    padding: 1rem 1.5rem 0px 2.5rem;
+}
+
+.task-descriptionInput {
+    background-color: transparent;
+    border: 1px #505050 solid;
+    resize: none;
+    width: 100%;
+    padding: 1rem;
+    height: 6rem;
+    color: #eee;
+}
+
+.task-descriptionInput:focus {
+    outline: 0px solid transparent;
+}
+
 .prioritySelector {
     display: flex;
     gap: 0.2rem;
