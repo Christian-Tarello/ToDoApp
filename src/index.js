@@ -6,6 +6,10 @@ import StorageWrapper from './modules/utils/storage';
 import ChangeListenerProxy from './modules/utils/changeListenerProxy';
 import LoadFactory from './modules/factories/loadFactory';
 import PopupLayer from './modules/popUp/popUpLayer';
+import ScrollContainer from './modules/customElements/scrollContainer';
+
+
+customElements.define('scroll-container', ScrollContainer);
 
 const sidebarHook = document.querySelector(".sidebar");
 const contentHook = document.querySelector(".content");

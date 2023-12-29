@@ -14,6 +14,7 @@ export default class ProjectTemplate {
     static createNameInput() {
         const element = document.createElement('input');
         element.setAttribute('type', 'text');
+        element.setAttribute('placeholder', 'Project Name');
         element.classList.add('project-nameInput');
         return element;
     }
@@ -23,6 +24,17 @@ export default class ProjectTemplate {
         element.setAttribute('type', 'button');
         element.classList.add('project-deleteButton');
         element.innerText = 'X';
+        return element;
+    }
+
+    static createBodyContainer() {
+        const element = document.createElement('div');
+        element.classList.add('project-body');
+        return element;
+    }
+
+    static createBodyWrapper() {
+        const element = document.createElement('scroll-container');
         return element;
     }
 
@@ -45,6 +57,8 @@ export default class ProjectTemplate {
         const headerContainer = ProjectTemplate.createHeaderContainer();
         const nameInput = ProjectTemplate.createNameInput();
         const deleteButton = ProjectTemplate.createDeleteButton();
+        const bodyContainer = ProjectTemplate.createBodyContainer();
+        const bodyWrapper = ProjectTemplate.createBodyWrapper();
         const tasksHook = ProjectTemplate.createTasksHook();
         const addTaskButton = ProjectTemplate.createAddTaskInputButton();
 
@@ -53,10 +67,18 @@ export default class ProjectTemplate {
             deleteButton
         );
 
-        element.append(
-            headerContainer,
+        bodyWrapper.append(
             tasksHook,
             addTaskButton
+        );
+
+        bodyContainer.append(
+            bodyWrapper
+        );
+
+        element.append(
+            headerContainer,
+            bodyContainer
         );
 
         return {
