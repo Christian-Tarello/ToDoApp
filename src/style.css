@@ -480,3 +480,76 @@ main {
 .checklist-addButton:hover {
     color: #eee;
 }
+
+.popUpLayer {
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.popUp {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.popUp--clickLocked {
+    pointer-events: all;
+}
+
+.popUp
+
+.popUp-wrapper {
+    position: absolute;
+    pointer-events: all;
+}
+
+.popUp--topLeft .popUp-wrapper {
+    left: 0;
+}
+
+.popUp--topMid .popUp-wrapper {
+    left: 50%;
+    translate: -50% 0%;
+}
+
+.popUp--topRight .popUp-wrapper {
+    right: 0;
+}
+
+.popUp--centerLeft .popUp-wrapper {
+    top: 50%;
+    left: 0;
+    translate: 0% -50%;
+}
+
+.popUp--center .popUp-wrapper {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.popUp--centerRight .popUp-wrapper {
+    top: 50%;
+    right: 0;
+    translate: 0% -50%;
+}
+
+.popUp--bottomLeft{
+    bottom: 0;
+    left: 0;
+}
+.popUp--bottomMid{
+    bottom: 0;
+    left: 50%;
+    translate: -50% 0%;
+}
+
+.popUp--bottomRight{
+    bottom: 0;
+    right: 0;
+}

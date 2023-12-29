@@ -6,8 +6,8 @@ export default class PopupLayer {
         this.contentHook.classList.add('popUpLayer');
     }
 
-    addPopUp(element, clickLock, scrollLock, backgroundColor, position) {
-        const popUp = createPopUp(element, clickLock, scrollLock, backgroundColor, position)
+    addPopUp(element, clickLock, backgroundColor, position) {
+        const popUp = createPopUp(element, clickLock, backgroundColor, position)
         this.contentHook.append(popUp);
     }
 }

@@ -1,18 +1,19 @@
 import Positions from "./popUpPositions";
 
-export default function createPopUp(element, clickLock = false, scrollLock = false, backgroundColor = "#ffffff00", position = Positions.CENTER) {
+export default function createPopUp(element, clickLock = false, backgroundColor = "#ffffff00", position = Positions.CENTER) {
     const popUp = document.createElement('div');
-    popUp.append(element);
     popUp.classList.add('popUp');
     popUp.classList.add(position);
     popUp.style.backgroundColor = backgroundColor;
+    
+    const popUpWrapper = document.createElement('div');
+    popUpWrapper.classList.add('popUp-wrapper');
 
+    popUpWrapper.append(element);
+    popUp.append(popUpWrapper);
+    
     if (clickLock) {
         popUp.classList.add('popUp--clickLocked');
-    }
-
-    if (scrollLock) {
-        popUp.classList.add('popUp--scrollLocked');
     }
 
     const observer = new MutationObserver((mutationList, observer) => {
@@ -20,7 +21,7 @@ export default function createPopUp(element, clickLock = false, scrollLock = fal
         observer.disconnect();
     })
 
-    observer.observe(popUp, { childList: true });
+    observer.observe(popUpWrapper, { childList: true });
 
     return popUp;
 }
