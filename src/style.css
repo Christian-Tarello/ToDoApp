@@ -69,6 +69,10 @@ main {
     padding: 0.5rem;
 }
 
+.collectionButton-deleteButton {
+    scale: 125% 100%;
+}
+
 .collectionButton-button {
     text-align: start;
     overflow: hidden;
@@ -97,7 +101,7 @@ main {
 .collectionButton::before {
     translate: -100%;
     background-color: transparent;
-    transition: background-color 0.2s ease-ins;
+    transition: background-color 0.2s ease-in;
 }
 
 .collectionButton:hover::before {
@@ -243,44 +247,25 @@ main {
 
 .task-displayToggle {
     grid-area: displayToggle;
-    display: grid;
-    place-items: center;
-    align-self: center;
     height: 50%;
     appearance: none;
-    aspect-ratio: 1/1;
-}
-
-.task-displayToggle::before {
-    content: ' ';
-    display: block;
-    height: 100%;
     aspect-ratio: 1/1;
     background-image: url('./assets/displayToggle.svg');
     rotate: 180deg;
     transition: rotate 0.5s cubic-bezier(0.41, 2.03, 0.46, 0.56);
 }
 
-.task-displayToggle:checked:before {
+.task-displayToggle:checked {
     rotate: 0deg;
 }
 
 .task-doneToggle {
     grid-area: doneToggle;
-    display: grid;
-    place-items: center;
     appearance: none;
     aspect-ratio: 1/1;
     height: 50%;
-}
-
-.task-doneToggle::before {
-    content: ' ';
-    display: block;
-    height: 100%;
-    aspect-ratio: 1/1;
-    background-color: #505050;
     border-radius: 25%;
+    background-color: #505050;
 }
 
 .task-doneToggle:checked:before {
@@ -489,7 +474,7 @@ main {
     border: 0px transparent solid;
     color: grey;
     padding: 0px;
-    
+
 }
 
 .checklist-addButton:hover {
