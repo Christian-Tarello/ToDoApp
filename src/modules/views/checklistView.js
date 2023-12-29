@@ -7,18 +7,21 @@ export default class ChecklistView {
 
     createContainer() {
         const element = document.createElement('div');
+        element.classList.add('checklist');
         return element;
     }
 
     createItemsHook() {
         this.itemsHook = document.createElement('ul');
+        this.itemsHook.classList.add('checklist-itemList');
         return this.itemsHook;
     }
 
     createAddItemButton() {
         this.addItemButton = document.createElement('button');
+        this.addItemButton.classList.add('checklist-addButton');
         this.addItemButton.setAttribute('type', 'button');
-        this.addItemButton.innerText = "+";
+        this.addItemButton.innerText = "Add Item +";
         return this.addItemButton;
     }
 

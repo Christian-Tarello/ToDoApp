@@ -423,3 +423,75 @@ main {
 .prioritySelector-priority[value="Unset"]::before {
     background-color: grey;
 }
+
+.checklist-itemList {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.checklistItem {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-auto-rows: 1fr;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px #505050 solid;
+    padding: 0.5rem;
+    color: #eee;
+}
+
+.checklistItem-descriptionInput {
+    background-color: transparent;
+    border: 0px transparent solid;
+    color: inherit;
+}
+
+.checklistItem-descriptionInput:focus {
+    outline: 0px transparent solid;
+}
+
+.checklistItem-doneToggle {
+    appearance: none;
+    background-color: #505050;
+    border-radius: 25%;
+    height: 80%;
+    aspect-ratio: 1/1;
+}
+
+.checklistItem-doneToggle:hover {
+    background-color: #606060;
+}
+
+.checklistItem-doneToggle:checked {
+    background-color: grey;
+}
+
+.checklistItem-deleteButton {
+    background-color: transparent;
+    border: 0px solid transparent;
+    color: #505050;
+    transform: scaleX(120%);
+    font-size: 1.2rem;
+    padding: 0.25rem;
+}
+
+.checklistItem-deleteButton:hover,
+.checklistItem-deleteButton:focus {
+    color: #606060;
+}
+
+.checklist-addButton {
+    background-color: transparent;
+    border: 0px transparent solid;
+    color: grey;
+    padding: 0px;
+    
+}
+
+.checklist-addButton:hover {
+    color: #eee;
+}

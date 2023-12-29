@@ -7,23 +7,27 @@ export default class ChecklistItemView {
 
     createContainer() {
         const element = document.createElement('li');
+        element.classList.add('checklistItem');
         return element;
     }
 
     createDescriptionInput() {
         this.descriptionInput = document.createElement('input');
+        this.descriptionInput.classList.add('checklistItem-descriptionInput');
         this.descriptionInput.setAttribute('type', 'text');
         return this.descriptionInput;
     }
 
     createDoneToggle() {
         this.doneToggle = document.createElement('input');
+        this.doneToggle.classList.add('checklistItem-doneToggle');
         this.doneToggle.setAttribute('type', 'checkbox');
         return this.doneToggle;
     }
 
     createDeleteButton() {
         this.deleteButton = document.createElement('button');
+        this.deleteButton.classList.add('checklistItem-deleteButton');
         this.deleteButton.setAttribute('type', 'button');
         this.deleteButton.innerText = 'X';
         return this.deleteButton;
