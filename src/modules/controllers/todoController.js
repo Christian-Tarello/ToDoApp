@@ -32,19 +32,15 @@ export default class TodoController {
 
     displayDueToday() {
         const dueToday = this.todo.getTasksDueToday();
-        if (dueToday.length !== 0) {
-            const taskElements = dueToday.map((task) => {return this.elementFactory.buildTask(task)});
-            const element = this.createStaticProjectElement('Today', taskElements);
-            this.contentHook.replaceChildren(element);
-        }
+        const taskElements = dueToday.map((task) => {return this.elementFactory.buildTask(task)});
+        const element = this.createStaticProjectElement('Today', taskElements);
+        this.contentHook.replaceChildren(element);
     }
 
     displayDueThisWeek() {
         const dueThisWeek = this.todo.getTasksDueThisWeek();
-        if (dueThisWeek.length !== 0) {
-            const taskElements = dueThisWeek.map((task) => {return this.elementFactory.buildTask(task)});
-            const element = this.createStaticProjectElement('This Week', taskElements);
-            this.contentHook.replaceChildren(element);
-        }
+        const taskElements = dueThisWeek.map((task) => {return this.elementFactory.buildTask(task)});
+        const element = this.createStaticProjectElement('This Week', taskElements);
+        this.contentHook.replaceChildren(element);
     }
 }
