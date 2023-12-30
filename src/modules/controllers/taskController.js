@@ -50,5 +50,6 @@ export default class TaskController {
     delete() {
         this.finalize();
         this.task.unlink();
+        this.view.remove();
     }
 }

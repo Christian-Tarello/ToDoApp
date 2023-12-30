@@ -175,4 +175,8 @@ export default class TaskView {
             this.bodyContainer.classList.add('task-body--hidden');
         }
     }
+
+    remove() {
+        this.element.remove();
+    }
 }
