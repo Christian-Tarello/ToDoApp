@@ -50,7 +50,7 @@ export default class ElementFactory {
     }
 
     buildNoEditProject(project) {
-        const projectView = new NoEditProjectView(new ProjectController(project, this));
+        const projectView = new NoEditProjectView(new ProjectController(project, this, this.popUpLayer));
         const element = projectView.build();
         return element;
     }
