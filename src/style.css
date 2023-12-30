@@ -268,7 +268,11 @@ main {
     background-color: #505050;
 }
 
-.task-doneToggle:checked:before {
+.task-doneToggle:hover {
+    background-color: #606060;
+}
+
+.task-doneToggle:checked {
     background-color: grey;
 }
 
