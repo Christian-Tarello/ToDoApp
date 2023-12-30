@@ -553,3 +553,71 @@ main {
     bottom: 0;
     right: 0;
 }
+
+.taskForm {
+    background-color: #333;
+    padding: 2rem;
+    font-family: 'Roboto', sans-serif;
+    color: #eee;
+}
+
+.taskForm-fieldList {
+    border: 1px #505050 solid;
+    padding: 1rem;
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.taskForm-field {
+    display: grid;
+    grid-template-columns: 8rem auto;
+    gap: 1rem;
+}
+
+.taskForm-label,
+.taskForm-text, 
+.taskForm-select,
+.taskForm-date {
+    color: inherit;
+    font-family: inherit;
+}
+
+.taskForm-text,
+.taskForm-select,
+.taskForm-date {
+    background-color: transparent;
+    border: 0px transparent solid;
+    border-bottom: 1px solid #505050;
+}
+
+.taskForm-text:focus,
+.taskForm-text:hover,
+.taskForm-select:focus,
+.taskForm-select:hover,
+.taskForm-date:focus,
+.taskForm-date:hover {
+    border-color: #eee;
+    outline: 0px transparent;
+}
+
+.taskForm-select {
+    appearance: none;
+}
+
+.taskForm-select > option {
+    background-color: #505050;
+}
+
+.taskForm-button {
+    background-color: transparent;
+    border: 1px #505050 solid;
+    margin-right: 0.2rem;
+    padding: 0.5rem;
+    color: #505050;
+}
+
+.taskForm-button:hover {
+    color: #eee;
+    border-color: gray;
+}

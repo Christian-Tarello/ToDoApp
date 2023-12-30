@@ -13,7 +13,7 @@ export default class ProjectController {
 
     addTaskInput() {
         const element = this.elementFactory.buildTaskInput(this.project);
-        this.popUpLayer.addPopUp(element, true, "#2d2d2dc2");
+        this.popUpLayer.addPopUp(element, true, "#80808080");
     }
 
     updateView() {
