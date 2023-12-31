@@ -1,0 +1,18 @@
+<svg 
+xmlns = "http://www.w3.org/2000/svg"
+viewBox = "0 0 400 400"
+>
+    <rect x="15" y="15" rx="45" ry="45" height="165" width="165" fill="transparent" stroke="#eee" stroke-width="30"/>
+    <rect x="15" y="220" rx="45" ry="45" height="165" width="165" fill="transparent" stroke="#eee" stroke-width="30"/>
+
+    <rect x="230" y="50" rx="10" ry="10" height="80" width="150" fill="#eee"/>
+    <rect x="230" y="255" rx="10" ry="10" height="80" width="150" fill="#eee"/>
+
+    <svg viewBox = "0 0 100 100" x="30" y="235" height="135" width="135">
+        <path fill="transparent" stroke="#eee" stroke-width="15" d="
+            M 10 60
+            L 35 85
+            L 90 10"
+        />
+    </svg>
+</svg>

@@ -1,0 +1,11 @@
+<svg 
+xmlns = "http://www.w3.org/2000/svg"
+viewBox = "0 0 100 100"
+>
+    <path fill="transparent" stroke="#505050" stroke-width="15" d="
+        M 10 30
+        L 50 65
+        L 90 30"
+    />
+
+</svg>
